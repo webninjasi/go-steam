@@ -1,9 +1,10 @@
 package steam
 
 import (
-	"github.com/Philipp15b/go-steam/netutil"
 	"math/rand"
 	"time"
+
+	"github.com/Philipp15b/go-steam/netutil"
 )
 
 var CMServers = [][]string{

@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"net/http"
+	"strconv"
+
 	"github.com/Philipp15b/go-steam/community"
 	"github.com/Philipp15b/go-steam/economy/inventory"
 	"github.com/Philipp15b/go-steam/netutil"
 	"github.com/Philipp15b/go-steam/steamid"
-	"net/http"
-	"strconv"
 )
 
 type APIKey string

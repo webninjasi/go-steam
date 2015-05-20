@@ -2,6 +2,7 @@ package gamecoordinator
 
 import (
 	"bytes"
+
 	. "github.com/Philipp15b/go-steam/internal"
 	. "github.com/Philipp15b/go-steam/internal/protobuf"
 	. "github.com/Philipp15b/go-steam/internal/steamlang"

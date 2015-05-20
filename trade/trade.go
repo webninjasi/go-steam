@@ -2,9 +2,10 @@ package trade
 
 import (
 	"errors"
+	"time"
+
 	"github.com/Philipp15b/go-steam/steamid"
 	"github.com/Philipp15b/go-steam/trade/tradeapi"
-	"time"
 )
 
 const pollTimeout = time.Second
