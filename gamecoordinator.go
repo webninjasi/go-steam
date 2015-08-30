@@ -2,6 +2,7 @@ package steam
 
 import (
 	"bytes"
+
 	. "github.com/Philipp15b/go-steam/internal"
 	. "github.com/Philipp15b/go-steam/internal/gamecoordinator"
 	. "github.com/Philipp15b/go-steam/internal/protobuf"

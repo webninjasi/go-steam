@@ -1446,13 +1446,13 @@ func (m *CMsgGSKick) GetEdenyReason() int32 {
 }
 
 type CMsgClientAuthList struct {
-	TokensLeft               *uint32                              `protobuf:"varint,1,opt,name=tokens_left" json:"tokens_left,omitempty"`
-	LastRequestSeq           *uint32                              `protobuf:"varint,2,opt,name=last_request_seq" json:"last_request_seq,omitempty"`
-	LastRequestSeqFromServer *uint32                              `protobuf:"varint,3,opt,name=last_request_seq_from_server" json:"last_request_seq_from_server,omitempty"`
+	TokensLeft               *uint32           `protobuf:"varint,1,opt,name=tokens_left" json:"tokens_left,omitempty"`
+	LastRequestSeq           *uint32           `protobuf:"varint,2,opt,name=last_request_seq" json:"last_request_seq,omitempty"`
+	LastRequestSeqFromServer *uint32           `protobuf:"varint,3,opt,name=last_request_seq_from_server" json:"last_request_seq_from_server,omitempty"`
 	Tickets                  []*CMsgAuthTicket `protobuf:"bytes,4,rep,name=tickets" json:"tickets,omitempty"`
-	AppIds                   []uint32                             `protobuf:"varint,5,rep,name=app_ids" json:"app_ids,omitempty"`
-	MessageSequence          *uint32                              `protobuf:"varint,6,opt,name=message_sequence" json:"message_sequence,omitempty"`
-	XXX_unrecognized         []byte                               `json:"-"`
+	AppIds                   []uint32          `protobuf:"varint,5,rep,name=app_ids" json:"app_ids,omitempty"`
+	MessageSequence          *uint32           `protobuf:"varint,6,opt,name=message_sequence" json:"message_sequence,omitempty"`
+	XXX_unrecognized         []byte            `json:"-"`
 }
 
 func (m *CMsgClientAuthList) Reset()         { *m = CMsgClientAuthList{} }
@@ -6344,10 +6344,10 @@ func (m *CMsgClientRequestEncryptedAppTicket) GetUserdata() []byte {
 }
 
 type CMsgClientRequestEncryptedAppTicketResponse struct {
-	AppId              *uint32                                  `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
-	Eresult            *int32                                   `protobuf:"varint,2,opt,name=eresult,def=2" json:"eresult,omitempty"`
+	AppId              *uint32             `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
+	Eresult            *int32              `protobuf:"varint,2,opt,name=eresult,def=2" json:"eresult,omitempty"`
 	EncryptedAppTicket *EncryptedAppTicket `protobuf:"bytes,3,opt,name=encrypted_app_ticket" json:"encrypted_app_ticket,omitempty"`
-	XXX_unrecognized   []byte                                   `json:"-"`
+	XXX_unrecognized   []byte              `json:"-"`
 }
 
 func (m *CMsgClientRequestEncryptedAppTicketResponse) Reset() {

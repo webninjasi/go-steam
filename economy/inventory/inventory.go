@@ -6,6 +6,7 @@ package inventory
 import (
 	"bytes"
 	"encoding/json"
+
 	"github.com/Philipp15b/go-steam/economy"
 	"github.com/Philipp15b/go-steam/jsont"
 )
