@@ -132,24 +132,24 @@ func (c *Client) Connected() bool {
 //
 // You will receive a ServerListEvent after logging in which contains a new list of servers of which you
 // should choose one yourself and connect with ConnectTo since the included list may not always be up to date.
-func (c *Client) Connect() (*netutil.PortAddr, error) {
+func (c *Client) Connect() *netutil.PortAddr {
 	server := GetRandomCM()
-	err := c.ConnectTo(server)
-	return server, err
+	c.ConnectTo(server)
+	return server
 }
 
 // ConnectNorthAmerica Connects to a random North American server on the Steam network
-func (c *Client) ConnectNorthAmerica() (*netutil.PortAddr, error) {
+func (c *Client) ConnectNorthAmerica() *netutil.PortAddr {
 	server := GetRandomNorthAmericaCM()
-	err := c.ConnectTo(server)
-	return server, err
+	c.ConnectTo(server)
+	return server
 }
 
 // ConnectEurope Connects to a random Europe server on the Steam network
-func (c *Client) ConnectEurope() (*netutil.PortAddr, error) {
+func (c *Client) ConnectEurope() *netutil.PortAddr {
 	server := GetRandomEuropeCM()
-	err := c.ConnectTo(server)
-	return server, err
+	c.ConnectTo(server)
+	return server
 }
 
 // ConnectSingapore Connects to a random SG server on the Steam network
@@ -161,10 +161,10 @@ func (c *Client) ConnectSingapore() *netutil.PortAddr {
 
 // Connects to a specific server.
 // If this client is already connected, it is disconnected first.
-func (c *Client) ConnectTo(addr *netutil.PortAddr) error {
+func (c *Client) ConnectTo(addr *netutil.PortAddr) {
 	c.Disconnect()
 
-	conn, err := dialTCP(addr.ToTCPAddr(), nil, c.ConnectionTimeout)
+	conn, err := dialTCP(addr.ToTCPAddr(), nil)
 	if err != nil {
 		c.Fatalf("Connect failed: %v", err)
 		return
@@ -173,15 +173,13 @@ func (c *Client) ConnectTo(addr *netutil.PortAddr) error {
 
 	go c.readLoop()
 	go c.writeLoop()
-
-	return nil
 }
 
 // Connects to a specific server, and binds to a specified local IP
-func (c *Client) ConnectToBind(addr *netutil.PortAddr, local *net.TCPAddr) error {
+func (c *Client) ConnectToBind(addr *netutil.PortAddr, local *net.TCPAddr) {
 	c.Disconnect()
 
-	conn, err := dialTCP(addr.ToTCPAddr(), local, c.ConnectionTimeout)
+	conn, err := dialTCP(addr.ToTCPAddr(), local)
 	if err != nil {
 		c.Fatalf("Connect failed: %v", err)
 		return
@@ -190,8 +188,6 @@ func (c *Client) ConnectToBind(addr *netutil.PortAddr, local *net.TCPAddr) error
 
 	go c.readLoop()
 	go c.writeLoop()
-
-	return nil
 }
 
 func (c *Client) Disconnect() {
