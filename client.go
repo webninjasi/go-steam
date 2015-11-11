@@ -166,7 +166,8 @@ func (c *Client) ConnectTo(addr *netutil.PortAddr) error {
 
 	conn, err := dialTCP(addr.ToTCPAddr(), nil, c.ConnectionTimeout)
 	if err != nil {
-		return err
+		c.Fatalf("Connect failed: %v", err)
+		return
 	}
 	c.conn = conn
 
@@ -182,7 +183,8 @@ func (c *Client) ConnectToBind(addr *netutil.PortAddr, local *net.TCPAddr) error
 
 	conn, err := dialTCP(addr.ToTCPAddr(), local, c.ConnectionTimeout)
 	if err != nil {
-		return err
+		c.Fatalf("Connect failed: %v", err)
+		return
 	}
 	c.conn = conn
 
@@ -247,7 +249,6 @@ func (c *Client) readLoop() {
 }
 
 func (c *Client) writeLoop() {
-	defer c.Disconnect()
 	for {
 		c.mutex.RLock()
 		conn := c.conn
@@ -264,7 +265,7 @@ func (c *Client) writeLoop() {
 		err := msg.Serialize(c.writeBuf)
 		if err != nil {
 			c.writeBuf.Reset()
-			c.Errorf("Error serializing message %v: %v", msg, err)
+			c.Fatalf("Error serializing message %v: %v", msg, err)
 			return
 		}
 
@@ -273,7 +274,7 @@ func (c *Client) writeLoop() {
 		c.writeBuf.Reset()
 
 		if err != nil {
-			c.Errorf("Error writing message %v: %v", msg, err)
+			c.Fatalf("Error writing message %v: %v", msg, err)
 			return
 		}
 	}
