@@ -6,9 +6,9 @@ See: https://developer.valvesoftware.com/wiki/Steam_Web_API/IEconService
 package tradeoffer
 
 import (
-	"github.com/Philipp15b/go-steam/economy"
-	"github.com/Philipp15b/go-steam/economy/inventory"
-	"github.com/Philipp15b/go-steam/steamid"
+	"github.com/softashell/go-steam/economy"
+	"github.com/softashell/go-steam/economy/inventory"
+	"github.com/softashell/go-steam/steamid"
 )
 
 type TradeOfferState uint

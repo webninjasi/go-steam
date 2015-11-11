@@ -3,8 +3,8 @@ package trade
 import (
 	"time"
 
-	"github.com/Philipp15b/go-steam/economy/inventory"
-	"github.com/Philipp15b/go-steam/trade/tradeapi"
+	"github.com/softashell/go-steam/economy/inventory"
+	"github.com/softashell/go-steam/trade/tradeapi"
 )
 
 type Slot uint

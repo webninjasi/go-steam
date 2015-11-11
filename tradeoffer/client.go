@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/Philipp15b/go-steam/community"
-	"github.com/Philipp15b/go-steam/economy/inventory"
-	"github.com/Philipp15b/go-steam/netutil"
-	"github.com/Philipp15b/go-steam/steamid"
+	"github.com/softashell/go-steam/community"
+	"github.com/softashell/go-steam/economy/inventory"
+	"github.com/softashell/go-steam/netutil"
+	"github.com/softashell/go-steam/steamid"
 )
 
 type APIKey string

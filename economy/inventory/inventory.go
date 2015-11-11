@@ -7,8 +7,8 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/Philipp15b/go-steam/economy"
-	"github.com/Philipp15b/go-steam/jsont"
+	"github.com/softashell/go-steam/economy"
+	"github.com/softashell/go-steam/jsont"
 )
 
 type Inventory struct {

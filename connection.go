@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Philipp15b/go-steam/cryptoutil"
-	. "github.com/Philipp15b/go-steam/internal"
+	. "github.com/softashell/go-steam/_internal"
+	"github.com/softashell/go-steam/cryptoutil"
 )
 
 type connection interface {

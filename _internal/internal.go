@@ -1,9 +1,9 @@
-package internal
+package _internal
 
 import (
 	"io"
 
-	. "github.com/Philipp15b/go-steam/internal/steamlang"
+	. "github.com/softashell/go-steam/_internal/steamlang"
 )
 
 type JobId uint64

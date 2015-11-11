@@ -7,12 +7,12 @@ import (
 	"io"
 	"sync"
 
-	. "github.com/Philipp15b/go-steam/internal"
-	. "github.com/Philipp15b/go-steam/internal/protobuf"
-	. "github.com/Philipp15b/go-steam/internal/steamlang"
-	. "github.com/Philipp15b/go-steam/rwu"
-	"github.com/Philipp15b/go-steam/socialcache"
-	. "github.com/Philipp15b/go-steam/steamid"
+	. "github.com/softashell/go-steam/_internal"
+	. "github.com/softashell/go-steam/_internal/protobuf"
+	. "github.com/softashell/go-steam/_internal/steamlang"
+	. "github.com/softashell/go-steam/rwu"
+	"github.com/softashell/go-steam/socialcache"
+	. "github.com/softashell/go-steam/steamid"
 	"github.com/golang/protobuf/proto"
 )
 

@@ -1,11 +1,11 @@
-package internal
+package _internal
 
 import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
 
-	. "github.com/Philipp15b/go-steam/internal/steamlang"
+	. "github.com/softashell/go-steam/_internal/steamlang"
 	"github.com/golang/protobuf/proto"
 )
 

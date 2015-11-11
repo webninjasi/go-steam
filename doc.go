@@ -9,8 +9,8 @@ received the LoggedOnEvent, you should set your persona state to online to recei
 	package main
 
 	import (
-		"github.com/Philipp15b/go-steam"
-		"github.com/Philipp15b/go-steam/internal/steamlang"
+		"github.com/softashell/go-steam"
+		"github.com/softashell/go-steam/_internal/steamlang"
 		"io/ioutil"
 		"log"
 	)

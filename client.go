@@ -13,12 +13,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/Philipp15b/go-steam/cryptoutil"
-	. "github.com/Philipp15b/go-steam/internal"
-	. "github.com/Philipp15b/go-steam/internal/protobuf"
-	. "github.com/Philipp15b/go-steam/internal/steamlang"
-	"github.com/Philipp15b/go-steam/netutil"
-	. "github.com/Philipp15b/go-steam/steamid"
+	. "github.com/softashell/go-steam/_internal"
+	. "github.com/softashell/go-steam/_internal/protobuf"
+	. "github.com/softashell/go-steam/_internal/steamlang"
+	"github.com/softashell/go-steam/cryptoutil"
+	"github.com/softashell/go-steam/netutil"
+	. "github.com/softashell/go-steam/steamid"
 )
 
 // Represents a client to the Steam network.
