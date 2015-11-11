@@ -168,7 +168,7 @@ func (c *Client) ConnectSingapore() *netutil.PortAddr {
 func (c *Client) ConnectTo(addr *netutil.PortAddr) {
 	c.Disconnect()
 
-	conn, err := dialTCP(addr.ToTCPAddr(), nil)
+	conn, err := dialTCP(addr.ToTCPAddr(), nil, 5*time.Second)
 	if err != nil {
 		c.Fatalf("Connect failed: %v", err)
 		return
@@ -184,7 +184,7 @@ func (c *Client) ConnectTo(addr *netutil.PortAddr) {
 func (c *Client) ConnectToBind(addr *netutil.PortAddr, local *net.TCPAddr) {
 	c.Disconnect()
 
-	conn, err := dialTCP(addr.ToTCPAddr(), local)
+	conn, err := dialTCP(addr.ToTCPAddr(), local, 5*time.Second)
 	if err != nil {
 		c.Fatalf("Connect failed: %v", err)
 		return
