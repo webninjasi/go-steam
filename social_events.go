@@ -156,3 +156,8 @@ type ProfileInfoEvent struct {
 	Headline    string
 	Summary     string
 }
+
+type FriendMessageHistoryEvent struct {
+	Result  EResult
+	SteamId SteamId `json:",string"`
+}

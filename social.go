@@ -7,13 +7,13 @@ import (
 	"io"
 	"sync"
 
+	"github.com/golang/protobuf/proto"
 	. "github.com/softashell/go-steam/_internal"
 	. "github.com/softashell/go-steam/_internal/protobuf"
 	. "github.com/softashell/go-steam/_internal/steamlang"
 	. "github.com/softashell/go-steam/rwu"
 	"github.com/softashell/go-steam/socialcache"
 	. "github.com/softashell/go-steam/steamid"
-	"github.com/golang/protobuf/proto"
 )
 
 // Provides access to social aspects of Steam.
@@ -154,6 +154,11 @@ func (s *Social) RequestProfileInfo(id SteamId) {
 	}))
 }
 
+// Requests all offline messages and marks them as read
+func (s *Social) RequestOfflineMessages() {
+	s.client.Write(NewClientMsgProtobuf(EMsg_ClientFSGetFriendMessageHistoryForOfflineMessages, &CMsgClientFSGetFriendMessageHistoryForOfflineMessages{}))
+}
+
 // Attempts to join a chat room
 func (s *Social) JoinChat(id SteamId) {
 	chatId := id.ClanToChat()
@@ -233,6 +238,8 @@ func (s *Social) HandlePacket(packet *Packet) {
 		s.handleIgnoreFriendResponse(packet)
 	case EMsg_ClientFriendProfileInfoResponse:
 		s.handleProfileInfoResponse(packet)
+	case EMsg_ClientFSGetFriendMessageHistoryResponse:
+		s.handleFriendMessageHistoryResponse(packet)
 	}
 }
 
@@ -595,4 +602,32 @@ func (s *Social) handleProfileInfoResponse(packet *Packet) {
 		Headline:    body.GetHeadline(),
 		Summary:     body.GetSummary(),
 	})
+}
+
+func (s *Social) handleFriendMessageHistoryResponse(packet *Packet) {
+	body := new(CMsgClientFSGetFriendMessageHistoryResponse)
+	packet.ReadProtoMsg(body)
+
+	steamid := SteamId(body.GetSteamid())
+
+	// Not really useful for anything but it doesn't hurt
+	s.client.Emit(&FriendMessageHistoryEvent{
+		Result:  EResult(body.GetSuccess()),
+		SteamId: steamid,
+	})
+
+	// Handles all unread offline messages as new
+	for _, message := range body.GetMessages() {
+		if !message.GetUnread() {
+			continue
+		}
+
+		s.client.Emit(&ChatMsgEvent{
+			//ChatterId: SteamId(message.GetAccountid()), ???
+			ChatterId: steamid,
+			Message:   message.GetMessage(),
+			EntryType: EChatEntryType_ChatMsg,
+			// TODO: set timestamp and unread
+		})
+	}
 }
