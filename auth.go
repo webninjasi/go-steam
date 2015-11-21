@@ -5,11 +5,11 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/golang/protobuf/proto"
 	. "github.com/softashell/go-steam/_internal"
 	. "github.com/softashell/go-steam/_internal/protobuf"
 	. "github.com/softashell/go-steam/_internal/steamlang"
 	. "github.com/softashell/go-steam/steamid"
-	"github.com/golang/protobuf/proto"
 )
 
 type Auth struct {
@@ -167,10 +167,7 @@ func (a *Auth) handleAccountInfo(packet *Packet) {
 	a.client.Emit(&AccountInfoEvent{
 		PersonaName:          body.GetPersonaName(),
 		Country:              body.GetIpCountry(),
-		PasswordSalt:         body.GetSaltPassword(),
-		PasswordSHADisgest:   body.GetShaDigest_Password(),
 		CountAuthedComputers: body.GetCountAuthedComputers(),
-		LockedWithIpt:        body.GetLockedWithIpt(),
 		AccountFlags:         EAccountFlags(body.GetAccountFlags()),
 		FacebookId:           body.GetFacebookId(),
 		FacebookName:         body.GetFacebookName(),
