@@ -6,8 +6,8 @@ package tf2
 import (
 	"github.com/softashell/go-steam"
 	. "github.com/softashell/go-steam/_internal/gamecoordinator"
-	. "github.com/softashell/go-steam/tf2/internal"
-	"github.com/softashell/go-steam/tf2/internal/protobuf"
+	. "github.com/softashell/go-steam/tf2/_internal"
+	"github.com/softashell/go-steam/tf2/_internal/protobuf"
 )
 
 const AppId = 440

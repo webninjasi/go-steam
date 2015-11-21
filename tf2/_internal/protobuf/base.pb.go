@@ -616,6 +616,9 @@ type CSOEconGameAccountClient struct {
 	DuelBanExpiration             *uint32 `protobuf:"fixed32,7,opt,name=duel_ban_expiration" json:"duel_ban_expiration,omitempty"`
 	PreviewItemDef                *uint32 `protobuf:"varint,8,opt,name=preview_item_def,def=0" json:"preview_item_def,omitempty"`
 	PreventMatchUntilDate         *uint32 `protobuf:"varint,18,opt,name=prevent_match_until_date" json:"prevent_match_until_date,omitempty"`
+	PhoneVerified                 *bool   `protobuf:"varint,19,opt,name=phone_verified,def=0" json:"phone_verified,omitempty"`
+	SkillRating_6V6               *uint32 `protobuf:"varint,20,opt,name=skill_rating_6v6" json:"skill_rating_6v6,omitempty"`
+	SkillRating_9V9               *uint32 `protobuf:"varint,21,opt,name=skill_rating_9v9" json:"skill_rating_9v9,omitempty"`
 	XXX_unrecognized              []byte  `json:"-"`
 }
 
@@ -626,6 +629,7 @@ func (*CSOEconGameAccountClient) ProtoMessage()    {}
 const Default_CSOEconGameAccountClient_AdditionalBackpackSlots uint32 = 0
 const Default_CSOEconGameAccountClient_TrialAccount bool = false
 const Default_CSOEconGameAccountClient_PreviewItemDef uint32 = 0
+const Default_CSOEconGameAccountClient_PhoneVerified bool = false
 
 func (m *CSOEconGameAccountClient) GetAdditionalBackpackSlots() uint32 {
 	if m != nil && m.AdditionalBackpackSlots != nil {
@@ -679,6 +683,27 @@ func (m *CSOEconGameAccountClient) GetPreviewItemDef() uint32 {
 func (m *CSOEconGameAccountClient) GetPreventMatchUntilDate() uint32 {
 	if m != nil && m.PreventMatchUntilDate != nil {
 		return *m.PreventMatchUntilDate
+	}
+	return 0
+}
+
+func (m *CSOEconGameAccountClient) GetPhoneVerified() bool {
+	if m != nil && m.PhoneVerified != nil {
+		return *m.PhoneVerified
+	}
+	return Default_CSOEconGameAccountClient_PhoneVerified
+}
+
+func (m *CSOEconGameAccountClient) GetSkillRating_6V6() uint32 {
+	if m != nil && m.SkillRating_6V6 != nil {
+		return *m.SkillRating_6V6
+	}
+	return 0
+}
+
+func (m *CSOEconGameAccountClient) GetSkillRating_9V9() uint32 {
+	if m != nil && m.SkillRating_9V9 != nil {
+		return *m.SkillRating_9V9
 	}
 	return 0
 }
@@ -1129,6 +1154,38 @@ func (m *CMsgTrackUniquePlayerPairEvent) GetItemId() uint64 {
 func (m *CMsgTrackUniquePlayerPairEvent) GetEventType() uint32 {
 	if m != nil && m.EventType != nil {
 		return *m.EventType
+	}
+	return 0
+}
+
+type CMsgApplyStrangeCountTransfer struct {
+	ToolItemId       *uint64 `protobuf:"varint,1,opt,name=tool_item_id" json:"tool_item_id,omitempty"`
+	ItemSrcItemId    *uint64 `protobuf:"varint,2,opt,name=item_src_item_id" json:"item_src_item_id,omitempty"`
+	ItemDestItemId   *uint64 `protobuf:"varint,3,opt,name=item_dest_item_id" json:"item_dest_item_id,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgApplyStrangeCountTransfer) Reset()         { *m = CMsgApplyStrangeCountTransfer{} }
+func (m *CMsgApplyStrangeCountTransfer) String() string { return proto.CompactTextString(m) }
+func (*CMsgApplyStrangeCountTransfer) ProtoMessage()    {}
+
+func (m *CMsgApplyStrangeCountTransfer) GetToolItemId() uint64 {
+	if m != nil && m.ToolItemId != nil {
+		return *m.ToolItemId
+	}
+	return 0
+}
+
+func (m *CMsgApplyStrangeCountTransfer) GetItemSrcItemId() uint64 {
+	if m != nil && m.ItemSrcItemId != nil {
+		return *m.ItemSrcItemId
+	}
+	return 0
+}
+
+func (m *CMsgApplyStrangeCountTransfer) GetItemDestItemId() uint64 {
+	if m != nil && m.ItemDestItemId != nil {
+		return *m.ItemDestItemId
 	}
 	return 0
 }
@@ -1839,13 +1896,16 @@ func (m *CMsgConsumableExhausted) GetItemDefId() int32 {
 }
 
 type CMsgItemAcknowledged struct {
-	AccountId        *uint32 `protobuf:"varint,1,opt,name=account_id" json:"account_id,omitempty"`
-	Inventory        *uint32 `protobuf:"varint,2,opt,name=inventory" json:"inventory,omitempty"`
-	DefIndex         *uint32 `protobuf:"varint,3,opt,name=def_index" json:"def_index,omitempty"`
-	Quality          *uint32 `protobuf:"varint,4,opt,name=quality" json:"quality,omitempty"`
-	Rarity           *uint32 `protobuf:"varint,5,opt,name=rarity" json:"rarity,omitempty"`
-	Origin           *uint32 `protobuf:"varint,6,opt,name=origin" json:"origin,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	AccountId        *uint32  `protobuf:"varint,1,opt,name=account_id" json:"account_id,omitempty"`
+	Inventory        *uint32  `protobuf:"varint,2,opt,name=inventory" json:"inventory,omitempty"`
+	DefIndex         *uint32  `protobuf:"varint,3,opt,name=def_index" json:"def_index,omitempty"`
+	Quality          *uint32  `protobuf:"varint,4,opt,name=quality" json:"quality,omitempty"`
+	Rarity           *uint32  `protobuf:"varint,5,opt,name=rarity" json:"rarity,omitempty"`
+	Origin           *uint32  `protobuf:"varint,6,opt,name=origin" json:"origin,omitempty"`
+	IsStrange        *uint32  `protobuf:"varint,7,opt,name=is_strange" json:"is_strange,omitempty"`
+	IsUnusual        *uint32  `protobuf:"varint,8,opt,name=is_unusual" json:"is_unusual,omitempty"`
+	Wear             *float32 `protobuf:"fixed32,9,opt,name=wear" json:"wear,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
 }
 
 func (m *CMsgItemAcknowledged) Reset()         { *m = CMsgItemAcknowledged{} }
@@ -1890,6 +1950,27 @@ func (m *CMsgItemAcknowledged) GetRarity() uint32 {
 func (m *CMsgItemAcknowledged) GetOrigin() uint32 {
 	if m != nil && m.Origin != nil {
 		return *m.Origin
+	}
+	return 0
+}
+
+func (m *CMsgItemAcknowledged) GetIsStrange() uint32 {
+	if m != nil && m.IsStrange != nil {
+		return *m.IsStrange
+	}
+	return 0
+}
+
+func (m *CMsgItemAcknowledged) GetIsUnusual() uint32 {
+	if m != nil && m.IsUnusual != nil {
+		return *m.IsUnusual
+	}
+	return 0
+}
+
+func (m *CMsgItemAcknowledged) GetWear() float32 {
+	if m != nil && m.Wear != nil {
+		return *m.Wear
 	}
 	return 0
 }
@@ -2820,7 +2901,8 @@ func (m *CMsgDeliverGiftResponseGiver) GetReceiverAccountName() string {
 
 type CSOEconGameAccountForGameServers struct {
 	SkillRating      *uint32 `protobuf:"varint,3,opt,name=skill_rating" json:"skill_rating,omitempty"`
-	SkillRatingBeta  *uint32 `protobuf:"varint,2,opt,name=skill_rating_beta" json:"skill_rating_beta,omitempty"`
+	SkillRating_6V6  *uint32 `protobuf:"varint,2,opt,name=skill_rating_6v6" json:"skill_rating_6v6,omitempty"`
+	SkillRating_9V9  *uint32 `protobuf:"varint,4,opt,name=skill_rating_9v9" json:"skill_rating_9v9,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
 
@@ -2835,9 +2917,16 @@ func (m *CSOEconGameAccountForGameServers) GetSkillRating() uint32 {
 	return 0
 }
 
-func (m *CSOEconGameAccountForGameServers) GetSkillRatingBeta() uint32 {
-	if m != nil && m.SkillRatingBeta != nil {
-		return *m.SkillRatingBeta
+func (m *CSOEconGameAccountForGameServers) GetSkillRating_6V6() uint32 {
+	if m != nil && m.SkillRating_6V6 != nil {
+		return *m.SkillRating_6V6
+	}
+	return 0
+}
+
+func (m *CSOEconGameAccountForGameServers) GetSkillRating_9V9() uint32 {
+	if m != nil && m.SkillRating_9V9 != nil {
+		return *m.SkillRating_9V9
 	}
 	return 0
 }

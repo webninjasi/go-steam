@@ -168,6 +168,14 @@ const (
 	EGCItemMsg_k_EMsgGCQuestObjective_Progress                EGCItemMsg = 2558
 	EGCItemMsg_k_EMsgGCQuestCompleted                         EGCItemMsg = 2559
 	EGCItemMsg_k_EMsgGCApplyDuckToken                         EGCItemMsg = 2560
+	EGCItemMsg_k_EMsgGCQuestComplete_Request                  EGCItemMsg = 2561
+	EGCItemMsg_k_EMsgGCQuestObjective_PointsChange            EGCItemMsg = 2562
+	EGCItemMsg_k_EMsgGCQuestObjective_PointsChangeResponse    EGCItemMsg = 2563
+	EGCItemMsg_k_EMsgGCQuestObjective_RequestLoanerItems      EGCItemMsg = 2564
+	EGCItemMsg_k_EMsgGCQuestObjective_RequestLoanerResponse   EGCItemMsg = 2565
+	EGCItemMsg_k_EMsgGCApplyStrangeCountTransfer              EGCItemMsg = 2566
+	EGCItemMsg_k_EMsgGCCraftCollectionUpgrade                 EGCItemMsg = 2567
+	EGCItemMsg_k_EMsgGCCraftHalloweenOffering                 EGCItemMsg = 2568
 )
 
 var EGCItemMsg_name = map[int32]string{
@@ -324,6 +332,14 @@ var EGCItemMsg_name = map[int32]string{
 	2558: "k_EMsgGCQuestObjective_Progress",
 	2559: "k_EMsgGCQuestCompleted",
 	2560: "k_EMsgGCApplyDuckToken",
+	2561: "k_EMsgGCQuestComplete_Request",
+	2562: "k_EMsgGCQuestObjective_PointsChange",
+	2563: "k_EMsgGCQuestObjective_PointsChangeResponse",
+	2564: "k_EMsgGCQuestObjective_RequestLoanerItems",
+	2565: "k_EMsgGCQuestObjective_RequestLoanerResponse",
+	2566: "k_EMsgGCApplyStrangeCountTransfer",
+	2567: "k_EMsgGCCraftCollectionUpgrade",
+	2568: "k_EMsgGCCraftHalloweenOffering",
 }
 var EGCItemMsg_value = map[string]int32{
 	"k_EMsgGCBase":                                   1000,
@@ -479,6 +495,14 @@ var EGCItemMsg_value = map[string]int32{
 	"k_EMsgGCQuestObjective_Progress":                2558,
 	"k_EMsgGCQuestCompleted":                         2559,
 	"k_EMsgGCApplyDuckToken":                         2560,
+	"k_EMsgGCQuestComplete_Request":                  2561,
+	"k_EMsgGCQuestObjective_PointsChange":            2562,
+	"k_EMsgGCQuestObjective_PointsChangeResponse":    2563,
+	"k_EMsgGCQuestObjective_RequestLoanerItems":      2564,
+	"k_EMsgGCQuestObjective_RequestLoanerResponse":   2565,
+	"k_EMsgGCApplyStrangeCountTransfer":              2566,
+	"k_EMsgGCCraftCollectionUpgrade":                 2567,
+	"k_EMsgGCCraftHalloweenOffering":                 2568,
 }
 
 func (x EGCItemMsg) Enum() *EGCItemMsg {
@@ -1205,9 +1229,8 @@ func (m *CMsgGCShuffleCrateContents) GetUserCodeString() string {
 type CMsgGCQuestObjective_Progress struct {
 	QuestItemId      *uint64 `protobuf:"varint,1,opt,name=quest_item_id" json:"quest_item_id,omitempty"`
 	QuestAttribIndex *uint32 `protobuf:"varint,2,opt,name=quest_attrib_index" json:"quest_attrib_index,omitempty"`
-	StartCount       *uint32 `protobuf:"varint,3,opt,name=start_count" json:"start_count,omitempty"`
-	ProposedCount    *uint32 `protobuf:"varint,4,opt,name=proposed_count" json:"proposed_count,omitempty"`
-	OwnerSteamid     *uint64 `protobuf:"fixed64,5,opt,name=owner_steamid" json:"owner_steamid,omitempty"`
+	Delta            *uint32 `protobuf:"varint,3,opt,name=delta" json:"delta,omitempty"`
+	OwnerSteamid     *uint64 `protobuf:"fixed64,4,opt,name=owner_steamid" json:"owner_steamid,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
 
@@ -1229,16 +1252,9 @@ func (m *CMsgGCQuestObjective_Progress) GetQuestAttribIndex() uint32 {
 	return 0
 }
 
-func (m *CMsgGCQuestObjective_Progress) GetStartCount() uint32 {
-	if m != nil && m.StartCount != nil {
-		return *m.StartCount
-	}
-	return 0
-}
-
-func (m *CMsgGCQuestObjective_Progress) GetProposedCount() uint32 {
-	if m != nil && m.ProposedCount != nil {
-		return *m.ProposedCount
+func (m *CMsgGCQuestObjective_Progress) GetDelta() uint32 {
+	if m != nil && m.Delta != nil {
+		return *m.Delta
 	}
 	return 0
 }
@@ -1250,6 +1266,114 @@ func (m *CMsgGCQuestObjective_Progress) GetOwnerSteamid() uint64 {
 	return 0
 }
 
+type CMsgGCQuestObjective_PointsChange struct {
+	QuestItemId      *uint64 `protobuf:"varint,1,opt,name=quest_item_id" json:"quest_item_id,omitempty"`
+	StandardPoints   *uint32 `protobuf:"varint,2,opt,name=standard_points" json:"standard_points,omitempty"`
+	BonusPoints      *uint32 `protobuf:"varint,3,opt,name=bonus_points" json:"bonus_points,omitempty"`
+	OwnerSteamid     *uint64 `protobuf:"fixed64,4,opt,name=owner_steamid" json:"owner_steamid,omitempty"`
+	UpdateBasePoints *bool   `protobuf:"varint,5,opt,name=update_base_points,def=0" json:"update_base_points,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgGCQuestObjective_PointsChange) Reset()         { *m = CMsgGCQuestObjective_PointsChange{} }
+func (m *CMsgGCQuestObjective_PointsChange) String() string { return proto.CompactTextString(m) }
+func (*CMsgGCQuestObjective_PointsChange) ProtoMessage()    {}
+
+const Default_CMsgGCQuestObjective_PointsChange_UpdateBasePoints bool = false
+
+func (m *CMsgGCQuestObjective_PointsChange) GetQuestItemId() uint64 {
+	if m != nil && m.QuestItemId != nil {
+		return *m.QuestItemId
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChange) GetStandardPoints() uint32 {
+	if m != nil && m.StandardPoints != nil {
+		return *m.StandardPoints
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChange) GetBonusPoints() uint32 {
+	if m != nil && m.BonusPoints != nil {
+		return *m.BonusPoints
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChange) GetOwnerSteamid() uint64 {
+	if m != nil && m.OwnerSteamid != nil {
+		return *m.OwnerSteamid
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChange) GetUpdateBasePoints() bool {
+	if m != nil && m.UpdateBasePoints != nil {
+		return *m.UpdateBasePoints
+	}
+	return Default_CMsgGCQuestObjective_PointsChange_UpdateBasePoints
+}
+
+type CMsgGCQuestObjective_PointsChangeResponse struct {
+	QuestItemId      *uint64 `protobuf:"varint,1,opt,name=quest_item_id" json:"quest_item_id,omitempty"`
+	StandardPoints   *uint32 `protobuf:"varint,2,opt,name=standard_points" json:"standard_points,omitempty"`
+	BonusPoints      *uint32 `protobuf:"varint,3,opt,name=bonus_points" json:"bonus_points,omitempty"`
+	UpdateBasePoints *bool   `protobuf:"varint,4,opt,name=update_base_points" json:"update_base_points,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgGCQuestObjective_PointsChangeResponse) Reset() {
+	*m = CMsgGCQuestObjective_PointsChangeResponse{}
+}
+func (m *CMsgGCQuestObjective_PointsChangeResponse) String() string { return proto.CompactTextString(m) }
+func (*CMsgGCQuestObjective_PointsChangeResponse) ProtoMessage()    {}
+
+func (m *CMsgGCQuestObjective_PointsChangeResponse) GetQuestItemId() uint64 {
+	if m != nil && m.QuestItemId != nil {
+		return *m.QuestItemId
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChangeResponse) GetStandardPoints() uint32 {
+	if m != nil && m.StandardPoints != nil {
+		return *m.StandardPoints
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChangeResponse) GetBonusPoints() uint32 {
+	if m != nil && m.BonusPoints != nil {
+		return *m.BonusPoints
+	}
+	return 0
+}
+
+func (m *CMsgGCQuestObjective_PointsChangeResponse) GetUpdateBasePoints() bool {
+	if m != nil && m.UpdateBasePoints != nil {
+		return *m.UpdateBasePoints
+	}
+	return false
+}
+
+type CMsgGCQuestComplete_Request struct {
+	QuestItemId      *uint64 `protobuf:"varint,1,opt,name=quest_item_id" json:"quest_item_id,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgGCQuestComplete_Request) Reset()         { *m = CMsgGCQuestComplete_Request{} }
+func (m *CMsgGCQuestComplete_Request) String() string { return proto.CompactTextString(m) }
+func (*CMsgGCQuestComplete_Request) ProtoMessage()    {}
+
+func (m *CMsgGCQuestComplete_Request) GetQuestItemId() uint64 {
+	if m != nil && m.QuestItemId != nil {
+		return *m.QuestItemId
+	}
+	return 0
+}
+
 type CMsgGCQuestCompleted struct {
 	XXX_unrecognized []byte `json:"-"`
 }
@@ -1257,6 +1381,76 @@ type CMsgGCQuestCompleted struct {
 func (m *CMsgGCQuestCompleted) Reset()         { *m = CMsgGCQuestCompleted{} }
 func (m *CMsgGCQuestCompleted) String() string { return proto.CompactTextString(m) }
 func (*CMsgGCQuestCompleted) ProtoMessage()    {}
+
+type CMsgGCQuestObjective_RequestLoanerItems struct {
+	QuestItemId      *uint64 `protobuf:"varint,1,opt,name=quest_item_id" json:"quest_item_id,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgGCQuestObjective_RequestLoanerItems) Reset() {
+	*m = CMsgGCQuestObjective_RequestLoanerItems{}
+}
+func (m *CMsgGCQuestObjective_RequestLoanerItems) String() string { return proto.CompactTextString(m) }
+func (*CMsgGCQuestObjective_RequestLoanerItems) ProtoMessage()    {}
+
+func (m *CMsgGCQuestObjective_RequestLoanerItems) GetQuestItemId() uint64 {
+	if m != nil && m.QuestItemId != nil {
+		return *m.QuestItemId
+	}
+	return 0
+}
+
+type CMsgGCQuestObjective_RequestLoanerResponse struct {
+	XXX_unrecognized []byte `json:"-"`
+}
+
+func (m *CMsgGCQuestObjective_RequestLoanerResponse) Reset() {
+	*m = CMsgGCQuestObjective_RequestLoanerResponse{}
+}
+func (m *CMsgGCQuestObjective_RequestLoanerResponse) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CMsgGCQuestObjective_RequestLoanerResponse) ProtoMessage() {}
+
+type CMsgCraftCollectionUpgrade struct {
+	ItemId           []uint64 `protobuf:"varint,1,rep,name=item_id" json:"item_id,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
+}
+
+func (m *CMsgCraftCollectionUpgrade) Reset()         { *m = CMsgCraftCollectionUpgrade{} }
+func (m *CMsgCraftCollectionUpgrade) String() string { return proto.CompactTextString(m) }
+func (*CMsgCraftCollectionUpgrade) ProtoMessage()    {}
+
+func (m *CMsgCraftCollectionUpgrade) GetItemId() []uint64 {
+	if m != nil {
+		return m.ItemId
+	}
+	return nil
+}
+
+type CMsgCraftHalloweenOffering struct {
+	ToolId           *uint64  `protobuf:"varint,1,opt,name=tool_id" json:"tool_id,omitempty"`
+	ItemId           []uint64 `protobuf:"varint,2,rep,name=item_id" json:"item_id,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
+}
+
+func (m *CMsgCraftHalloweenOffering) Reset()         { *m = CMsgCraftHalloweenOffering{} }
+func (m *CMsgCraftHalloweenOffering) String() string { return proto.CompactTextString(m) }
+func (*CMsgCraftHalloweenOffering) ProtoMessage()    {}
+
+func (m *CMsgCraftHalloweenOffering) GetToolId() uint64 {
+	if m != nil && m.ToolId != nil {
+		return *m.ToolId
+	}
+	return 0
+}
+
+func (m *CMsgCraftHalloweenOffering) GetItemId() []uint64 {
+	if m != nil {
+		return m.ItemId
+	}
+	return nil
+}
 
 func init() {
 	proto.RegisterEnum("EGCItemMsg", EGCItemMsg_name, EGCItemMsg_value)
