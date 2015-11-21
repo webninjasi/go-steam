@@ -3,10 +3,10 @@ package gamecoordinator
 import (
 	"io"
 
+	"github.com/golang/protobuf/proto"
 	. "github.com/softashell/go-steam/_internal"
 	. "github.com/softashell/go-steam/_internal/protobuf"
 	. "github.com/softashell/go-steam/_internal/steamlang"
-	"github.com/golang/protobuf/proto"
 )
 
 // An outgoing message to the Game Coordinator.

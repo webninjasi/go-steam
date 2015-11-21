@@ -7,7 +7,6 @@ package protobuf
 import proto "github.com/golang/protobuf/proto"
 import math "math"
 
-
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = math.Inf
@@ -376,33 +375,38 @@ func (m *CMsgClientUCMPublishFileResponse) GetNeedsWorkshopLegalAgreementAccepta
 }
 
 type CMsgClientUCMUpdatePublishedFile struct {
-	AppId                 *uint32  `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
-	PublishedFileId       *uint64  `protobuf:"fixed64,2,opt,name=published_file_id" json:"published_file_id,omitempty"`
-	FileName              *string  `protobuf:"bytes,3,opt,name=file_name" json:"file_name,omitempty"`
-	PreviewFileName       *string  `protobuf:"bytes,4,opt,name=preview_file_name" json:"preview_file_name,omitempty"`
-	Title                 *string  `protobuf:"bytes,5,opt,name=title" json:"title,omitempty"`
-	Description           *string  `protobuf:"bytes,6,opt,name=description" json:"description,omitempty"`
-	Tags                  []string `protobuf:"bytes,7,rep,name=tags" json:"tags,omitempty"`
-	Visibility            *int32   `protobuf:"varint,8,opt,name=visibility" json:"visibility,omitempty"`
-	UpdateFile            *bool    `protobuf:"varint,9,opt,name=update_file" json:"update_file,omitempty"`
-	UpdatePreviewFile     *bool    `protobuf:"varint,10,opt,name=update_preview_file" json:"update_preview_file,omitempty"`
-	UpdateTitle           *bool    `protobuf:"varint,11,opt,name=update_title" json:"update_title,omitempty"`
-	UpdateDescription     *bool    `protobuf:"varint,12,opt,name=update_description" json:"update_description,omitempty"`
-	UpdateTags            *bool    `protobuf:"varint,13,opt,name=update_tags" json:"update_tags,omitempty"`
-	UpdateVisibility      *bool    `protobuf:"varint,14,opt,name=update_visibility" json:"update_visibility,omitempty"`
-	ChangeDescription     *string  `protobuf:"bytes,15,opt,name=change_description" json:"change_description,omitempty"`
-	UpdateUrl             *bool    `protobuf:"varint,16,opt,name=update_url" json:"update_url,omitempty"`
-	Url                   *string  `protobuf:"bytes,17,opt,name=url" json:"url,omitempty"`
-	UpdateContentManifest *bool    `protobuf:"varint,18,opt,name=update_content_manifest" json:"update_content_manifest,omitempty"`
-	ContentManifest       *uint64  `protobuf:"fixed64,19,opt,name=content_manifest" json:"content_manifest,omitempty"`
-	Metadata              *string  `protobuf:"bytes,20,opt,name=metadata" json:"metadata,omitempty"`
-	UpdateMetadata        *bool    `protobuf:"varint,21,opt,name=update_metadata" json:"update_metadata,omitempty"`
-	XXX_unrecognized      []byte   `json:"-"`
+	AppId                 *uint32                                         `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
+	PublishedFileId       *uint64                                         `protobuf:"fixed64,2,opt,name=published_file_id" json:"published_file_id,omitempty"`
+	FileName              *string                                         `protobuf:"bytes,3,opt,name=file_name" json:"file_name,omitempty"`
+	PreviewFileName       *string                                         `protobuf:"bytes,4,opt,name=preview_file_name" json:"preview_file_name,omitempty"`
+	Title                 *string                                         `protobuf:"bytes,5,opt,name=title" json:"title,omitempty"`
+	Description           *string                                         `protobuf:"bytes,6,opt,name=description" json:"description,omitempty"`
+	Tags                  []string                                        `protobuf:"bytes,7,rep,name=tags" json:"tags,omitempty"`
+	Visibility            *int32                                          `protobuf:"varint,8,opt,name=visibility" json:"visibility,omitempty"`
+	UpdateFile            *bool                                           `protobuf:"varint,9,opt,name=update_file" json:"update_file,omitempty"`
+	UpdatePreviewFile     *bool                                           `protobuf:"varint,10,opt,name=update_preview_file" json:"update_preview_file,omitempty"`
+	UpdateTitle           *bool                                           `protobuf:"varint,11,opt,name=update_title" json:"update_title,omitempty"`
+	UpdateDescription     *bool                                           `protobuf:"varint,12,opt,name=update_description" json:"update_description,omitempty"`
+	UpdateTags            *bool                                           `protobuf:"varint,13,opt,name=update_tags" json:"update_tags,omitempty"`
+	UpdateVisibility      *bool                                           `protobuf:"varint,14,opt,name=update_visibility" json:"update_visibility,omitempty"`
+	ChangeDescription     *string                                         `protobuf:"bytes,15,opt,name=change_description" json:"change_description,omitempty"`
+	UpdateUrl             *bool                                           `protobuf:"varint,16,opt,name=update_url" json:"update_url,omitempty"`
+	Url                   *string                                         `protobuf:"bytes,17,opt,name=url" json:"url,omitempty"`
+	UpdateContentManifest *bool                                           `protobuf:"varint,18,opt,name=update_content_manifest" json:"update_content_manifest,omitempty"`
+	ContentManifest       *uint64                                         `protobuf:"fixed64,19,opt,name=content_manifest" json:"content_manifest,omitempty"`
+	Metadata              *string                                         `protobuf:"bytes,20,opt,name=metadata" json:"metadata,omitempty"`
+	UpdateMetadata        *bool                                           `protobuf:"varint,21,opt,name=update_metadata" json:"update_metadata,omitempty"`
+	Language              *int32                                          `protobuf:"varint,22,opt,name=language,def=0" json:"language,omitempty"`
+	RemovedKvtags         []string                                        `protobuf:"bytes,23,rep,name=removed_kvtags" json:"removed_kvtags,omitempty"`
+	Kvtags                []*CMsgClientUCMUpdatePublishedFile_KeyValueTag `protobuf:"bytes,24,rep,name=kvtags" json:"kvtags,omitempty"`
+	XXX_unrecognized      []byte                                          `json:"-"`
 }
 
 func (m *CMsgClientUCMUpdatePublishedFile) Reset()         { *m = CMsgClientUCMUpdatePublishedFile{} }
 func (m *CMsgClientUCMUpdatePublishedFile) String() string { return proto.CompactTextString(m) }
 func (*CMsgClientUCMUpdatePublishedFile) ProtoMessage()    {}
+
+const Default_CMsgClientUCMUpdatePublishedFile_Language int32 = 0
 
 func (m *CMsgClientUCMUpdatePublishedFile) GetAppId() uint32 {
 	if m != nil && m.AppId != nil {
@@ -549,6 +553,55 @@ func (m *CMsgClientUCMUpdatePublishedFile) GetUpdateMetadata() bool {
 		return *m.UpdateMetadata
 	}
 	return false
+}
+
+func (m *CMsgClientUCMUpdatePublishedFile) GetLanguage() int32 {
+	if m != nil && m.Language != nil {
+		return *m.Language
+	}
+	return Default_CMsgClientUCMUpdatePublishedFile_Language
+}
+
+func (m *CMsgClientUCMUpdatePublishedFile) GetRemovedKvtags() []string {
+	if m != nil {
+		return m.RemovedKvtags
+	}
+	return nil
+}
+
+func (m *CMsgClientUCMUpdatePublishedFile) GetKvtags() []*CMsgClientUCMUpdatePublishedFile_KeyValueTag {
+	if m != nil {
+		return m.Kvtags
+	}
+	return nil
+}
+
+type CMsgClientUCMUpdatePublishedFile_KeyValueTag struct {
+	Key              *string `protobuf:"bytes,1,opt,name=key" json:"key,omitempty"`
+	Value            *string `protobuf:"bytes,2,opt,name=value" json:"value,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgClientUCMUpdatePublishedFile_KeyValueTag) Reset() {
+	*m = CMsgClientUCMUpdatePublishedFile_KeyValueTag{}
+}
+func (m *CMsgClientUCMUpdatePublishedFile_KeyValueTag) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CMsgClientUCMUpdatePublishedFile_KeyValueTag) ProtoMessage() {}
+
+func (m *CMsgClientUCMUpdatePublishedFile_KeyValueTag) GetKey() string {
+	if m != nil && m.Key != nil {
+		return *m.Key
+	}
+	return ""
+}
+
+func (m *CMsgClientUCMUpdatePublishedFile_KeyValueTag) GetValue() string {
+	if m != nil && m.Value != nil {
+		return *m.Value
+	}
+	return ""
 }
 
 type CMsgClientUCMUpdatePublishedFileResponse struct {
@@ -706,52 +759,6 @@ func (m *CMsgClientUCMEnumerateUserPublishedFilesResponse_PublishedFileId) GetPu
 		return *m.PublishedFileId
 	}
 	return 0
-}
-
-type CMsgClientUCMSubscribePublishedFile struct {
-	AppId            *uint32 `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
-	PublishedFileId  *uint64 `protobuf:"fixed64,2,opt,name=published_file_id" json:"published_file_id,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientUCMSubscribePublishedFile) Reset()         { *m = CMsgClientUCMSubscribePublishedFile{} }
-func (m *CMsgClientUCMSubscribePublishedFile) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientUCMSubscribePublishedFile) ProtoMessage()    {}
-
-func (m *CMsgClientUCMSubscribePublishedFile) GetAppId() uint32 {
-	if m != nil && m.AppId != nil {
-		return *m.AppId
-	}
-	return 0
-}
-
-func (m *CMsgClientUCMSubscribePublishedFile) GetPublishedFileId() uint64 {
-	if m != nil && m.PublishedFileId != nil {
-		return *m.PublishedFileId
-	}
-	return 0
-}
-
-type CMsgClientUCMSubscribePublishedFileResponse struct {
-	Eresult          *int32 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CMsgClientUCMSubscribePublishedFileResponse) Reset() {
-	*m = CMsgClientUCMSubscribePublishedFileResponse{}
-}
-func (m *CMsgClientUCMSubscribePublishedFileResponse) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CMsgClientUCMSubscribePublishedFileResponse) ProtoMessage() {}
-
-const Default_CMsgClientUCMSubscribePublishedFileResponse_Eresult int32 = 2
-
-func (m *CMsgClientUCMSubscribePublishedFileResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientUCMSubscribePublishedFileResponse_Eresult
 }
 
 type CMsgClientUCMEnumerateUserSubscribedFiles struct {
@@ -1018,52 +1025,6 @@ func (m *CMsgClientUCMEnumerateUserSubscribedFilesWithUpdatesResponse_PublishedF
 		return *m.IsDepotContent
 	}
 	return false
-}
-
-type CMsgClientUCMUnsubscribePublishedFile struct {
-	AppId            *uint32 `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
-	PublishedFileId  *uint64 `protobuf:"fixed64,2,opt,name=published_file_id" json:"published_file_id,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientUCMUnsubscribePublishedFile) Reset()         { *m = CMsgClientUCMUnsubscribePublishedFile{} }
-func (m *CMsgClientUCMUnsubscribePublishedFile) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientUCMUnsubscribePublishedFile) ProtoMessage()    {}
-
-func (m *CMsgClientUCMUnsubscribePublishedFile) GetAppId() uint32 {
-	if m != nil && m.AppId != nil {
-		return *m.AppId
-	}
-	return 0
-}
-
-func (m *CMsgClientUCMUnsubscribePublishedFile) GetPublishedFileId() uint64 {
-	if m != nil && m.PublishedFileId != nil {
-		return *m.PublishedFileId
-	}
-	return 0
-}
-
-type CMsgClientUCMUnsubscribePublishedFileResponse struct {
-	Eresult          *int32 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CMsgClientUCMUnsubscribePublishedFileResponse) Reset() {
-	*m = CMsgClientUCMUnsubscribePublishedFileResponse{}
-}
-func (m *CMsgClientUCMUnsubscribePublishedFileResponse) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CMsgClientUCMUnsubscribePublishedFileResponse) ProtoMessage() {}
-
-const Default_CMsgClientUCMUnsubscribePublishedFileResponse_Eresult int32 = 2
-
-func (m *CMsgClientUCMUnsubscribePublishedFileResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientUCMUnsubscribePublishedFileResponse_Eresult
 }
 
 type CMsgClientUCMPublishedFileSubscribed struct {
@@ -2360,64 +2321,6 @@ func (m *CMsgClientRequestMachineAuthResponse) GetEresult() uint32 {
 	return 0
 }
 
-type CMsgClientChangeSteamGuardOptions struct {
-	SteamguardProvider           *uint32 `protobuf:"varint,1,opt,name=steamguard_provider" json:"steamguard_provider,omitempty"`
-	SteamguardRequireCodeDefault *uint32 `protobuf:"varint,2,opt,name=steamguard_require_code_default" json:"steamguard_require_code_default,omitempty"`
-	MachineName                  *string `protobuf:"bytes,3,opt,name=machine_name" json:"machine_name,omitempty"`
-	MachineNameUserchosen        *string `protobuf:"bytes,4,opt,name=machine_name_userchosen" json:"machine_name_userchosen,omitempty"`
-	XXX_unrecognized             []byte  `json:"-"`
-}
-
-func (m *CMsgClientChangeSteamGuardOptions) Reset()         { *m = CMsgClientChangeSteamGuardOptions{} }
-func (m *CMsgClientChangeSteamGuardOptions) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientChangeSteamGuardOptions) ProtoMessage()    {}
-
-func (m *CMsgClientChangeSteamGuardOptions) GetSteamguardProvider() uint32 {
-	if m != nil && m.SteamguardProvider != nil {
-		return *m.SteamguardProvider
-	}
-	return 0
-}
-
-func (m *CMsgClientChangeSteamGuardOptions) GetSteamguardRequireCodeDefault() uint32 {
-	if m != nil && m.SteamguardRequireCodeDefault != nil {
-		return *m.SteamguardRequireCodeDefault
-	}
-	return 0
-}
-
-func (m *CMsgClientChangeSteamGuardOptions) GetMachineName() string {
-	if m != nil && m.MachineName != nil {
-		return *m.MachineName
-	}
-	return ""
-}
-
-func (m *CMsgClientChangeSteamGuardOptions) GetMachineNameUserchosen() string {
-	if m != nil && m.MachineNameUserchosen != nil {
-		return *m.MachineNameUserchosen
-	}
-	return ""
-}
-
-type CMsgClientChangeSteamGuardOptionsResponse struct {
-	Eresult          *uint32 `protobuf:"varint,1,opt,name=eresult" json:"eresult,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientChangeSteamGuardOptionsResponse) Reset() {
-	*m = CMsgClientChangeSteamGuardOptionsResponse{}
-}
-func (m *CMsgClientChangeSteamGuardOptionsResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientChangeSteamGuardOptionsResponse) ProtoMessage()    {}
-
-func (m *CMsgClientChangeSteamGuardOptionsResponse) GetEresult() uint32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return 0
-}
-
 type CMsgClientCreateFriendsGroup struct {
 	Steamid          *uint64 `protobuf:"fixed64,1,opt,name=steamid" json:"steamid,omitempty"`
 	Groupname        *string `protobuf:"bytes,2,opt,name=groupname" json:"groupname,omitempty"`
@@ -2934,814 +2837,16 @@ func (m *CMsgTrading_StartSession) GetOtherSteamid() uint64 {
 	return 0
 }
 
-type CMsgClientMDSInitDepotBuildRequest struct {
-	DepotId          *uint32 `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	EncryptedAesKey  []byte  `protobuf:"bytes,2,opt,name=encrypted_aes_key" json:"encrypted_aes_key,omitempty"`
-	BuildId          *uint32 `protobuf:"varint,4,opt,name=build_id" json:"build_id,omitempty"`
-	ForLocalCs       *bool   `protobuf:"varint,5,opt,name=for_local_cs" json:"for_local_cs,omitempty"`
-	NoBaseline       *bool   `protobuf:"varint,6,opt,name=no_baseline" json:"no_baseline,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) Reset()         { *m = CMsgClientMDSInitDepotBuildRequest{} }
-func (m *CMsgClientMDSInitDepotBuildRequest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSInitDepotBuildRequest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) GetDepotId() uint32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) GetEncryptedAesKey() []byte {
-	if m != nil {
-		return m.EncryptedAesKey
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) GetBuildId() uint32 {
-	if m != nil && m.BuildId != nil {
-		return *m.BuildId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) GetForLocalCs() bool {
-	if m != nil && m.ForLocalCs != nil {
-		return *m.ForLocalCs
-	}
-	return false
-}
-
-func (m *CMsgClientMDSInitDepotBuildRequest) GetNoBaseline() bool {
-	if m != nil && m.NoBaseline != nil {
-		return *m.NoBaseline
-	}
-	return false
-}
-
-type CMsgClientMDSInitDepotBuildResponse struct {
-	Eresult           *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	DefaultChunkSize  *uint32 `protobuf:"varint,2,opt,name=default_chunk_size" json:"default_chunk_size,omitempty"`
-	BaseManifest      *uint64 `protobuf:"fixed64,3,opt,name=base_manifest" json:"base_manifest,omitempty"`
-	EncryptedDepotKey []byte  `protobuf:"bytes,4,opt,name=encrypted_depot_key" json:"encrypted_depot_key,omitempty"`
-	XXX_unrecognized  []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSInitDepotBuildResponse) Reset()         { *m = CMsgClientMDSInitDepotBuildResponse{} }
-func (m *CMsgClientMDSInitDepotBuildResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSInitDepotBuildResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSInitDepotBuildResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSInitDepotBuildResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSInitDepotBuildResponse_Eresult
-}
-
-func (m *CMsgClientMDSInitDepotBuildResponse) GetDefaultChunkSize() uint32 {
-	if m != nil && m.DefaultChunkSize != nil {
-		return *m.DefaultChunkSize
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitDepotBuildResponse) GetBaseManifest() uint64 {
-	if m != nil && m.BaseManifest != nil {
-		return *m.BaseManifest
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitDepotBuildResponse) GetEncryptedDepotKey() []byte {
-	if m != nil {
-		return m.EncryptedDepotKey
-	}
-	return nil
-}
-
-type CMsgClientMDSInitWorkshopBuildRequest struct {
-	DepotId          *uint32 `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	AppId            *uint32 `protobuf:"varint,2,opt,name=app_id" json:"app_id,omitempty"`
-	WorkshopItemId   *uint64 `protobuf:"varint,3,opt,name=workshop_item_id" json:"workshop_item_id,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildRequest) Reset()         { *m = CMsgClientMDSInitWorkshopBuildRequest{} }
-func (m *CMsgClientMDSInitWorkshopBuildRequest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSInitWorkshopBuildRequest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSInitWorkshopBuildRequest) GetDepotId() uint32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildRequest) GetAppId() uint32 {
-	if m != nil && m.AppId != nil {
-		return *m.AppId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildRequest) GetWorkshopItemId() uint64 {
-	if m != nil && m.WorkshopItemId != nil {
-		return *m.WorkshopItemId
-	}
-	return 0
-}
-
-type CMsgClientMDSInitWorkshopBuildResponse struct {
-	Eresult           *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	DefaultChunkSize  *uint32 `protobuf:"varint,2,opt,name=default_chunk_size" json:"default_chunk_size,omitempty"`
-	BaseManifest      *uint64 `protobuf:"fixed64,3,opt,name=base_manifest" json:"base_manifest,omitempty"`
-	SymmetricDepotKey []byte  `protobuf:"bytes,4,opt,name=symmetric_depot_key" json:"symmetric_depot_key,omitempty"`
-	XXX_unrecognized  []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildResponse) Reset() {
-	*m = CMsgClientMDSInitWorkshopBuildResponse{}
-}
-func (m *CMsgClientMDSInitWorkshopBuildResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSInitWorkshopBuildResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSInitWorkshopBuildResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSInitWorkshopBuildResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSInitWorkshopBuildResponse_Eresult
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildResponse) GetDefaultChunkSize() uint32 {
-	if m != nil && m.DefaultChunkSize != nil {
-		return *m.DefaultChunkSize
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildResponse) GetBaseManifest() uint64 {
-	if m != nil && m.BaseManifest != nil {
-		return *m.BaseManifest
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSInitWorkshopBuildResponse) GetSymmetricDepotKey() []byte {
-	if m != nil {
-		return m.SymmetricDepotKey
-	}
-	return nil
-}
-
-type CMsgClientMDSLoginRequest struct {
-	EncryptedSessionKey []byte `protobuf:"bytes,1,opt,name=encrypted_session_key" json:"encrypted_session_key,omitempty"`
-	XXX_unrecognized    []byte `json:"-"`
-}
-
-func (m *CMsgClientMDSLoginRequest) Reset()         { *m = CMsgClientMDSLoginRequest{} }
-func (m *CMsgClientMDSLoginRequest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSLoginRequest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSLoginRequest) GetEncryptedSessionKey() []byte {
-	if m != nil {
-		return m.EncryptedSessionKey
-	}
-	return nil
-}
-
-type CMsgClientMDSLoginResponse struct {
-	Eresult          *int32 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CMsgClientMDSLoginResponse) Reset()         { *m = CMsgClientMDSLoginResponse{} }
-func (m *CMsgClientMDSLoginResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSLoginResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSLoginResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSLoginResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSLoginResponse_Eresult
-}
-
-type CMsgClientMDSUploadDepotChunks struct {
-	DepotId          *uint32                                           `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	Chunks           []*CMsgClientMDSUploadDepotChunks_ChunkUploadData `protobuf:"bytes,2,rep,name=chunks" json:"chunks,omitempty"`
-	OnlyMetaData     *bool                                             `protobuf:"varint,3,opt,name=only_meta_data" json:"only_meta_data,omitempty"`
-	XXX_unrecognized []byte                                            `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadDepotChunks) Reset()         { *m = CMsgClientMDSUploadDepotChunks{} }
-func (m *CMsgClientMDSUploadDepotChunks) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadDepotChunks) ProtoMessage()    {}
-
-func (m *CMsgClientMDSUploadDepotChunks) GetDepotId() uint32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadDepotChunks) GetChunks() []*CMsgClientMDSUploadDepotChunks_ChunkUploadData {
-	if m != nil {
-		return m.Chunks
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSUploadDepotChunks) GetOnlyMetaData() bool {
-	if m != nil && m.OnlyMetaData != nil {
-		return *m.OnlyMetaData
-	}
-	return false
-}
-
-type CMsgClientMDSUploadDepotChunks_ChunkUploadData struct {
-	Sha                 []byte  `protobuf:"bytes,1,opt,name=sha" json:"sha,omitempty"`
-	RollingCrc          *uint32 `protobuf:"varint,2,opt,name=rolling_crc" json:"rolling_crc,omitempty"`
-	OriginalChunkSize   *uint32 `protobuf:"varint,3,opt,name=original_chunk_size" json:"original_chunk_size,omitempty"`
-	Data                []byte  `protobuf:"bytes,4,opt,name=data" json:"data,omitempty"`
-	CompressedChunkSize *uint32 `protobuf:"varint,5,opt,name=compressed_chunk_size" json:"compressed_chunk_size,omitempty"`
-	CompressedCrc       *uint32 `protobuf:"varint,6,opt,name=compressed_crc" json:"compressed_crc,omitempty"`
-	XXX_unrecognized    []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) Reset() {
-	*m = CMsgClientMDSUploadDepotChunks_ChunkUploadData{}
-}
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CMsgClientMDSUploadDepotChunks_ChunkUploadData) ProtoMessage() {}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetSha() []byte {
-	if m != nil {
-		return m.Sha
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetRollingCrc() uint32 {
-	if m != nil && m.RollingCrc != nil {
-		return *m.RollingCrc
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetOriginalChunkSize() uint32 {
-	if m != nil && m.OriginalChunkSize != nil {
-		return *m.OriginalChunkSize
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetData() []byte {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetCompressedChunkSize() uint32 {
-	if m != nil && m.CompressedChunkSize != nil {
-		return *m.CompressedChunkSize
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadDepotChunks_ChunkUploadData) GetCompressedCrc() uint32 {
-	if m != nil && m.CompressedCrc != nil {
-		return *m.CompressedCrc
-	}
-	return 0
-}
-
-type CMsgClientMDSUploadDepotChunksResponse struct {
-	Eresult          *int32 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadDepotChunksResponse) Reset() {
-	*m = CMsgClientMDSUploadDepotChunksResponse{}
-}
-func (m *CMsgClientMDSUploadDepotChunksResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadDepotChunksResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSUploadDepotChunksResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSUploadDepotChunksResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSUploadDepotChunksResponse_Eresult
-}
-
-type CMsgClientMDSUploadRateTest struct {
-	SerialNumber     *uint32 `protobuf:"varint,1,opt,name=serial_number" json:"serial_number,omitempty"`
-	TestData         []byte  `protobuf:"bytes,2,opt,name=test_data" json:"test_data,omitempty"`
-	TestDataSize     *uint32 `protobuf:"varint,3,opt,name=test_data_size" json:"test_data_size,omitempty"`
-	TestDataCrc      *uint32 `protobuf:"varint,4,opt,name=test_data_crc" json:"test_data_crc,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadRateTest) Reset()         { *m = CMsgClientMDSUploadRateTest{} }
-func (m *CMsgClientMDSUploadRateTest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadRateTest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSUploadRateTest) GetSerialNumber() uint32 {
-	if m != nil && m.SerialNumber != nil {
-		return *m.SerialNumber
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadRateTest) GetTestData() []byte {
-	if m != nil {
-		return m.TestData
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSUploadRateTest) GetTestDataSize() uint32 {
-	if m != nil && m.TestDataSize != nil {
-		return *m.TestDataSize
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadRateTest) GetTestDataCrc() uint32 {
-	if m != nil && m.TestDataCrc != nil {
-		return *m.TestDataCrc
-	}
-	return 0
-}
-
-type CMsgClientMDSUploadRateTestResponse struct {
-	Eresult          *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	SerialNumber     *uint32 `protobuf:"varint,2,opt,name=serial_number" json:"serial_number,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadRateTestResponse) Reset()         { *m = CMsgClientMDSUploadRateTestResponse{} }
-func (m *CMsgClientMDSUploadRateTestResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadRateTestResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSUploadRateTestResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSUploadRateTestResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSUploadRateTestResponse_Eresult
-}
-
-func (m *CMsgClientMDSUploadRateTestResponse) GetSerialNumber() uint32 {
-	if m != nil && m.SerialNumber != nil {
-		return *m.SerialNumber
-	}
-	return 0
-}
-
-type CMsgClientMDSTransmitManifestDataChunk struct {
-	Offset           *int32 `protobuf:"varint,1,opt,name=offset" json:"offset,omitempty"`
-	Data             []byte `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CMsgClientMDSTransmitManifestDataChunk) Reset() {
-	*m = CMsgClientMDSTransmitManifestDataChunk{}
-}
-func (m *CMsgClientMDSTransmitManifestDataChunk) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSTransmitManifestDataChunk) ProtoMessage()    {}
-
-func (m *CMsgClientMDSTransmitManifestDataChunk) GetOffset() int32 {
-	if m != nil && m.Offset != nil {
-		return *m.Offset
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSTransmitManifestDataChunk) GetData() []byte {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
-
-type CMsgClientMDSUploadManifestRequest struct {
-	DepotId                *uint32 `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	ManifestSizeCompressed *uint32 `protobuf:"varint,2,opt,name=manifest_size_compressed" json:"manifest_size_compressed,omitempty"`
-	BuildId                *uint32 `protobuf:"varint,6,opt,name=build_id" json:"build_id,omitempty"`
-	ManifestVersion        *uint32 `protobuf:"varint,7,opt,name=manifest_version" json:"manifest_version,omitempty"`
-	LocalCsBuild           *bool   `protobuf:"varint,9,opt,name=local_cs_build" json:"local_cs_build,omitempty"`
-	XXX_unrecognized       []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadManifestRequest) Reset()         { *m = CMsgClientMDSUploadManifestRequest{} }
-func (m *CMsgClientMDSUploadManifestRequest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadManifestRequest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSUploadManifestRequest) GetDepotId() uint32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestRequest) GetManifestSizeCompressed() uint32 {
-	if m != nil && m.ManifestSizeCompressed != nil {
-		return *m.ManifestSizeCompressed
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestRequest) GetBuildId() uint32 {
-	if m != nil && m.BuildId != nil {
-		return *m.BuildId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestRequest) GetManifestVersion() uint32 {
-	if m != nil && m.ManifestVersion != nil {
-		return *m.ManifestVersion
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestRequest) GetLocalCsBuild() bool {
-	if m != nil && m.LocalCsBuild != nil {
-		return *m.LocalCsBuild
-	}
-	return false
-}
-
-type CMsgClientMDSUploadManifestResponse struct {
-	Eresult                   *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	NewManifest               *uint64 `protobuf:"fixed64,2,opt,name=new_manifest" json:"new_manifest,omitempty"`
-	UniqueChunks              *uint32 `protobuf:"varint,3,opt,name=unique_chunks" json:"unique_chunks,omitempty"`
-	MissingChunks             *uint32 `protobuf:"varint,4,opt,name=missing_chunks" json:"missing_chunks,omitempty"`
-	BitstringSizeUncompressed *uint32 `protobuf:"varint,5,opt,name=bitstring_size_uncompressed" json:"bitstring_size_uncompressed,omitempty"`
-	Bitstring                 []byte  `protobuf:"bytes,6,opt,name=bitstring" json:"bitstring,omitempty"`
-	IsPrevManifest            *bool   `protobuf:"varint,7,opt,name=is_prev_manifest" json:"is_prev_manifest,omitempty"`
-	XXX_unrecognized          []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) Reset()         { *m = CMsgClientMDSUploadManifestResponse{} }
-func (m *CMsgClientMDSUploadManifestResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSUploadManifestResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSUploadManifestResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSUploadManifestResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSUploadManifestResponse_Eresult
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetNewManifest() uint64 {
-	if m != nil && m.NewManifest != nil {
-		return *m.NewManifest
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetUniqueChunks() uint32 {
-	if m != nil && m.UniqueChunks != nil {
-		return *m.UniqueChunks
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetMissingChunks() uint32 {
-	if m != nil && m.MissingChunks != nil {
-		return *m.MissingChunks
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetBitstringSizeUncompressed() uint32 {
-	if m != nil && m.BitstringSizeUncompressed != nil {
-		return *m.BitstringSizeUncompressed
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetBitstring() []byte {
-	if m != nil {
-		return m.Bitstring
-	}
-	return nil
-}
-
-func (m *CMsgClientMDSUploadManifestResponse) GetIsPrevManifest() bool {
-	if m != nil && m.IsPrevManifest != nil {
-		return *m.IsPrevManifest
-	}
-	return false
-}
-
-type CMsgClientMDSGetDepotManifest struct {
-	DepotId          *uint32 `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	ManifestId       *uint64 `protobuf:"fixed64,2,opt,name=manifest_id" json:"manifest_id,omitempty"`
-	ManifestVersion  *uint32 `protobuf:"varint,3,opt,name=manifest_version" json:"manifest_version,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSGetDepotManifest) Reset()         { *m = CMsgClientMDSGetDepotManifest{} }
-func (m *CMsgClientMDSGetDepotManifest) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSGetDepotManifest) ProtoMessage()    {}
-
-func (m *CMsgClientMDSGetDepotManifest) GetDepotId() uint32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSGetDepotManifest) GetManifestId() uint64 {
-	if m != nil && m.ManifestId != nil {
-		return *m.ManifestId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSGetDepotManifest) GetManifestVersion() uint32 {
-	if m != nil && m.ManifestVersion != nil {
-		return *m.ManifestVersion
-	}
-	return 0
-}
-
-type CMsgClientMDSGetDepotManifestResponse struct {
-	Eresult                *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	ManifestSizeCompressed *uint32 `protobuf:"varint,3,opt,name=manifest_size_compressed" json:"manifest_size_compressed,omitempty"`
-	XXX_unrecognized       []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSGetDepotManifestResponse) Reset()         { *m = CMsgClientMDSGetDepotManifestResponse{} }
-func (m *CMsgClientMDSGetDepotManifestResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSGetDepotManifestResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSGetDepotManifestResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSGetDepotManifestResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSGetDepotManifestResponse_Eresult
-}
-
-func (m *CMsgClientMDSGetDepotManifestResponse) GetManifestSizeCompressed() uint32 {
-	if m != nil && m.ManifestSizeCompressed != nil {
-		return *m.ManifestSizeCompressed
-	}
-	return 0
-}
-
-type CMsgClientMDSGetDepotManifestChunk struct {
-	Offset           *uint32 `protobuf:"varint,1,opt,name=offset" json:"offset,omitempty"`
-	Data             []byte  `protobuf:"bytes,3,opt,name=data" json:"data,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSGetDepotManifestChunk) Reset()         { *m = CMsgClientMDSGetDepotManifestChunk{} }
-func (m *CMsgClientMDSGetDepotManifestChunk) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSGetDepotManifestChunk) ProtoMessage()    {}
-
-func (m *CMsgClientMDSGetDepotManifestChunk) GetOffset() uint32 {
-	if m != nil && m.Offset != nil {
-		return *m.Offset
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSGetDepotManifestChunk) GetData() []byte {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
-
-type CMsgClientMDSRegisterAppBuild struct {
-	AppId            *int32  `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
-	Description      *string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
-	ForLocalCs       *bool   `protobuf:"varint,5,opt,name=for_local_cs" json:"for_local_cs,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSRegisterAppBuild) Reset()         { *m = CMsgClientMDSRegisterAppBuild{} }
-func (m *CMsgClientMDSRegisterAppBuild) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSRegisterAppBuild) ProtoMessage()    {}
-
-func (m *CMsgClientMDSRegisterAppBuild) GetAppId() int32 {
-	if m != nil && m.AppId != nil {
-		return *m.AppId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSRegisterAppBuild) GetDescription() string {
-	if m != nil && m.Description != nil {
-		return *m.Description
-	}
-	return ""
-}
-
-func (m *CMsgClientMDSRegisterAppBuild) GetForLocalCs() bool {
-	if m != nil && m.ForLocalCs != nil {
-		return *m.ForLocalCs
-	}
-	return false
-}
-
-type CMsgClientMDSRegisterAppBuildResponse struct {
-	Eresult          *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	BuildId          *uint32 `protobuf:"varint,2,opt,name=build_id" json:"build_id,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSRegisterAppBuildResponse) Reset()         { *m = CMsgClientMDSRegisterAppBuildResponse{} }
-func (m *CMsgClientMDSRegisterAppBuildResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSRegisterAppBuildResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSRegisterAppBuildResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSRegisterAppBuildResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSRegisterAppBuildResponse_Eresult
-}
-
-func (m *CMsgClientMDSRegisterAppBuildResponse) GetBuildId() uint32 {
-	if m != nil && m.BuildId != nil {
-		return *m.BuildId
-	}
-	return 0
-}
-
-type CMsgMDSSetAppBuildLive struct {
-	BuildId          *uint32 `protobuf:"varint,1,opt,name=build_id" json:"build_id,omitempty"`
-	AppId            *uint32 `protobuf:"varint,2,opt,name=app_id" json:"app_id,omitempty"`
-	BetaKey          *string `protobuf:"bytes,3,opt,name=beta_key" json:"beta_key,omitempty"`
-	BetaPassword     *string `protobuf:"bytes,5,opt,name=beta_password" json:"beta_password,omitempty"`
-	OnlyFinish       *bool   `protobuf:"varint,6,opt,name=only_finish" json:"only_finish,omitempty"`
-	NumSkipDepots    *uint32 `protobuf:"varint,7,opt,name=num_skip_depots" json:"num_skip_depots,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgMDSSetAppBuildLive) Reset()         { *m = CMsgMDSSetAppBuildLive{} }
-func (m *CMsgMDSSetAppBuildLive) String() string { return proto.CompactTextString(m) }
-func (*CMsgMDSSetAppBuildLive) ProtoMessage()    {}
-
-func (m *CMsgMDSSetAppBuildLive) GetBuildId() uint32 {
-	if m != nil && m.BuildId != nil {
-		return *m.BuildId
-	}
-	return 0
-}
-
-func (m *CMsgMDSSetAppBuildLive) GetAppId() uint32 {
-	if m != nil && m.AppId != nil {
-		return *m.AppId
-	}
-	return 0
-}
-
-func (m *CMsgMDSSetAppBuildLive) GetBetaKey() string {
-	if m != nil && m.BetaKey != nil {
-		return *m.BetaKey
-	}
-	return ""
-}
-
-func (m *CMsgMDSSetAppBuildLive) GetBetaPassword() string {
-	if m != nil && m.BetaPassword != nil {
-		return *m.BetaPassword
-	}
-	return ""
-}
-
-func (m *CMsgMDSSetAppBuildLive) GetOnlyFinish() bool {
-	if m != nil && m.OnlyFinish != nil {
-		return *m.OnlyFinish
-	}
-	return false
-}
-
-func (m *CMsgMDSSetAppBuildLive) GetNumSkipDepots() uint32 {
-	if m != nil && m.NumSkipDepots != nil {
-		return *m.NumSkipDepots
-	}
-	return 0
-}
-
-type CMsgMDSSetAppBuildLiveResponse struct {
-	Eresult          *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	ErrorString      *string `protobuf:"bytes,2,opt,name=error_string" json:"error_string,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgMDSSetAppBuildLiveResponse) Reset()         { *m = CMsgMDSSetAppBuildLiveResponse{} }
-func (m *CMsgMDSSetAppBuildLiveResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgMDSSetAppBuildLiveResponse) ProtoMessage()    {}
-
-const Default_CMsgMDSSetAppBuildLiveResponse_Eresult int32 = 2
-
-func (m *CMsgMDSSetAppBuildLiveResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgMDSSetAppBuildLiveResponse_Eresult
-}
-
-func (m *CMsgMDSSetAppBuildLiveResponse) GetErrorString() string {
-	if m != nil && m.ErrorString != nil {
-		return *m.ErrorString
-	}
-	return ""
-}
-
-type CMsgClientMDSSignInstallScript struct {
-	DepotId          *int32  `protobuf:"varint,1,opt,name=depot_id" json:"depot_id,omitempty"`
-	Data             *string `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSSignInstallScript) Reset()         { *m = CMsgClientMDSSignInstallScript{} }
-func (m *CMsgClientMDSSignInstallScript) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSSignInstallScript) ProtoMessage()    {}
-
-func (m *CMsgClientMDSSignInstallScript) GetDepotId() int32 {
-	if m != nil && m.DepotId != nil {
-		return *m.DepotId
-	}
-	return 0
-}
-
-func (m *CMsgClientMDSSignInstallScript) GetData() string {
-	if m != nil && m.Data != nil {
-		return *m.Data
-	}
-	return ""
-}
-
-type CMsgClientMDSSignInstallScriptResponse struct {
-	Eresult          *int32  `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
-	ErrorString      *string `protobuf:"bytes,2,opt,name=error_string" json:"error_string,omitempty"`
-	Data             *string `protobuf:"bytes,3,opt,name=data" json:"data,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CMsgClientMDSSignInstallScriptResponse) Reset() {
-	*m = CMsgClientMDSSignInstallScriptResponse{}
-}
-func (m *CMsgClientMDSSignInstallScriptResponse) String() string { return proto.CompactTextString(m) }
-func (*CMsgClientMDSSignInstallScriptResponse) ProtoMessage()    {}
-
-const Default_CMsgClientMDSSignInstallScriptResponse_Eresult int32 = 2
-
-func (m *CMsgClientMDSSignInstallScriptResponse) GetEresult() int32 {
-	if m != nil && m.Eresult != nil {
-		return *m.Eresult
-	}
-	return Default_CMsgClientMDSSignInstallScriptResponse_Eresult
-}
-
-func (m *CMsgClientMDSSignInstallScriptResponse) GetErrorString() string {
-	if m != nil && m.ErrorString != nil {
-		return *m.ErrorString
-	}
-	return ""
-}
-
-func (m *CMsgClientMDSSignInstallScriptResponse) GetData() string {
-	if m != nil && m.Data != nil {
-		return *m.Data
-	}
-	return ""
-}
-
 type CMsgClientEmailChange struct {
-	Password         *string `protobuf:"bytes,1,opt,name=password" json:"password,omitempty"`
-	Email            *string `protobuf:"bytes,2,opt,name=email" json:"email,omitempty"`
-	Code             *string `protobuf:"bytes,3,opt,name=code" json:"code,omitempty"`
-	Final            *bool   `protobuf:"varint,4,opt,name=final" json:"final,omitempty"`
-	Newmethod        *bool   `protobuf:"varint,5,opt,name=newmethod" json:"newmethod,omitempty"`
-	TwofactorCode    *string `protobuf:"bytes,6,opt,name=twofactor_code" json:"twofactor_code,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Password          *string `protobuf:"bytes,1,opt,name=password" json:"password,omitempty"`
+	Email             *string `protobuf:"bytes,2,opt,name=email" json:"email,omitempty"`
+	Code              *string `protobuf:"bytes,3,opt,name=code" json:"code,omitempty"`
+	Final             *bool   `protobuf:"varint,4,opt,name=final" json:"final,omitempty"`
+	Newmethod         *bool   `protobuf:"varint,5,opt,name=newmethod" json:"newmethod,omitempty"`
+	TwofactorCode     *string `protobuf:"bytes,6,opt,name=twofactor_code" json:"twofactor_code,omitempty"`
+	SmsCode           *string `protobuf:"bytes,7,opt,name=sms_code" json:"sms_code,omitempty"`
+	ClientSupportsSms *bool   `protobuf:"varint,8,opt,name=client_supports_sms" json:"client_supports_sms,omitempty"`
+	XXX_unrecognized  []byte  `json:"-"`
 }
 
 func (m *CMsgClientEmailChange) Reset()         { *m = CMsgClientEmailChange{} }
@@ -3790,8 +2895,23 @@ func (m *CMsgClientEmailChange) GetTwofactorCode() string {
 	return ""
 }
 
+func (m *CMsgClientEmailChange) GetSmsCode() string {
+	if m != nil && m.SmsCode != nil {
+		return *m.SmsCode
+	}
+	return ""
+}
+
+func (m *CMsgClientEmailChange) GetClientSupportsSms() bool {
+	if m != nil && m.ClientSupportsSms != nil {
+		return *m.ClientSupportsSms
+	}
+	return false
+}
+
 type CMsgClientEmailChangeResponse struct {
 	Eresult          *int32 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
+	RequiresSmsCode  *bool  `protobuf:"varint,2,opt,name=requires_sms_code" json:"requires_sms_code,omitempty"`
 	XXX_unrecognized []byte `json:"-"`
 }
 
@@ -3806,6 +2926,13 @@ func (m *CMsgClientEmailChangeResponse) GetEresult() int32 {
 		return *m.Eresult
 	}
 	return Default_CMsgClientEmailChangeResponse_Eresult
+}
+
+func (m *CMsgClientEmailChangeResponse) GetRequiresSmsCode() bool {
+	if m != nil && m.RequiresSmsCode != nil {
+		return *m.RequiresSmsCode
+	}
+	return false
 }
 
 type CMsgClientGetCDNAuthToken struct {
@@ -3964,6 +3091,86 @@ func (m *CMsgClientGetAppBetaPasswordsResponse_BetaPassword) GetBetaname() strin
 }
 
 func (m *CMsgClientGetAppBetaPasswordsResponse_BetaPassword) GetBetapassword() string {
+	if m != nil && m.Betapassword != nil {
+		return *m.Betapassword
+	}
+	return ""
+}
+
+type CMsgClientCheckAppBetaPassword struct {
+	AppId            *uint32 `protobuf:"varint,1,opt,name=app_id" json:"app_id,omitempty"`
+	Betapassword     *string `protobuf:"bytes,2,opt,name=betapassword" json:"betapassword,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgClientCheckAppBetaPassword) Reset()         { *m = CMsgClientCheckAppBetaPassword{} }
+func (m *CMsgClientCheckAppBetaPassword) String() string { return proto.CompactTextString(m) }
+func (*CMsgClientCheckAppBetaPassword) ProtoMessage()    {}
+
+func (m *CMsgClientCheckAppBetaPassword) GetAppId() uint32 {
+	if m != nil && m.AppId != nil {
+		return *m.AppId
+	}
+	return 0
+}
+
+func (m *CMsgClientCheckAppBetaPassword) GetBetapassword() string {
+	if m != nil && m.Betapassword != nil {
+		return *m.Betapassword
+	}
+	return ""
+}
+
+type CMsgClientCheckAppBetaPasswordResponse struct {
+	Eresult          *int32                                                 `protobuf:"varint,1,opt,name=eresult,def=2" json:"eresult,omitempty"`
+	Betapasswords    []*CMsgClientCheckAppBetaPasswordResponse_BetaPassword `protobuf:"bytes,4,rep,name=betapasswords" json:"betapasswords,omitempty"`
+	XXX_unrecognized []byte                                                 `json:"-"`
+}
+
+func (m *CMsgClientCheckAppBetaPasswordResponse) Reset() {
+	*m = CMsgClientCheckAppBetaPasswordResponse{}
+}
+func (m *CMsgClientCheckAppBetaPasswordResponse) String() string { return proto.CompactTextString(m) }
+func (*CMsgClientCheckAppBetaPasswordResponse) ProtoMessage()    {}
+
+const Default_CMsgClientCheckAppBetaPasswordResponse_Eresult int32 = 2
+
+func (m *CMsgClientCheckAppBetaPasswordResponse) GetEresult() int32 {
+	if m != nil && m.Eresult != nil {
+		return *m.Eresult
+	}
+	return Default_CMsgClientCheckAppBetaPasswordResponse_Eresult
+}
+
+func (m *CMsgClientCheckAppBetaPasswordResponse) GetBetapasswords() []*CMsgClientCheckAppBetaPasswordResponse_BetaPassword {
+	if m != nil {
+		return m.Betapasswords
+	}
+	return nil
+}
+
+type CMsgClientCheckAppBetaPasswordResponse_BetaPassword struct {
+	Betaname         *string `protobuf:"bytes,1,opt,name=betaname" json:"betaname,omitempty"`
+	Betapassword     *string `protobuf:"bytes,2,opt,name=betapassword" json:"betapassword,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CMsgClientCheckAppBetaPasswordResponse_BetaPassword) Reset() {
+	*m = CMsgClientCheckAppBetaPasswordResponse_BetaPassword{}
+}
+func (m *CMsgClientCheckAppBetaPasswordResponse_BetaPassword) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CMsgClientCheckAppBetaPasswordResponse_BetaPassword) ProtoMessage() {}
+
+func (m *CMsgClientCheckAppBetaPasswordResponse_BetaPassword) GetBetaname() string {
+	if m != nil && m.Betaname != nil {
+		return *m.Betaname
+	}
+	return ""
+}
+
+func (m *CMsgClientCheckAppBetaPasswordResponse_BetaPassword) GetBetapassword() string {
 	if m != nil && m.Betapassword != nil {
 		return *m.Betapassword
 	}
@@ -7193,15 +6400,17 @@ func (m *CMsgClientSharedLibraryStopPlaying_StopApp) GetOwnerId() uint32 {
 }
 
 type CMsgClientServiceCall struct {
-	SysidRouting     []byte  `protobuf:"bytes,1,opt,name=sysid_routing" json:"sysid_routing,omitempty"`
-	CallHandle       *uint32 `protobuf:"varint,2,opt,name=call_handle" json:"call_handle,omitempty"`
-	ModuleCrc        *uint32 `protobuf:"varint,3,opt,name=module_crc" json:"module_crc,omitempty"`
-	ModuleHash       []byte  `protobuf:"bytes,4,opt,name=module_hash" json:"module_hash,omitempty"`
-	FunctionId       *uint32 `protobuf:"varint,5,opt,name=function_id" json:"function_id,omitempty"`
-	CubOutputMax     *uint32 `protobuf:"varint,6,opt,name=cub_output_max" json:"cub_output_max,omitempty"`
-	Flags            *uint32 `protobuf:"varint,7,opt,name=flags" json:"flags,omitempty"`
-	Callparameter    []byte  `protobuf:"bytes,8,opt,name=callparameter" json:"callparameter,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	SysidRouting        []byte  `protobuf:"bytes,1,opt,name=sysid_routing" json:"sysid_routing,omitempty"`
+	CallHandle          *uint32 `protobuf:"varint,2,opt,name=call_handle" json:"call_handle,omitempty"`
+	ModuleCrc           *uint32 `protobuf:"varint,3,opt,name=module_crc" json:"module_crc,omitempty"`
+	ModuleHash          []byte  `protobuf:"bytes,4,opt,name=module_hash" json:"module_hash,omitempty"`
+	FunctionId          *uint32 `protobuf:"varint,5,opt,name=function_id" json:"function_id,omitempty"`
+	CubOutputMax        *uint32 `protobuf:"varint,6,opt,name=cub_output_max" json:"cub_output_max,omitempty"`
+	Flags               *uint32 `protobuf:"varint,7,opt,name=flags" json:"flags,omitempty"`
+	Callparameter       []byte  `protobuf:"bytes,8,opt,name=callparameter" json:"callparameter,omitempty"`
+	PingOnly            *bool   `protobuf:"varint,9,opt,name=ping_only" json:"ping_only,omitempty"`
+	MaxOutstandingCalls *uint32 `protobuf:"varint,10,opt,name=max_outstanding_calls" json:"max_outstanding_calls,omitempty"`
+	XXX_unrecognized    []byte  `json:"-"`
 }
 
 func (m *CMsgClientServiceCall) Reset()         { *m = CMsgClientServiceCall{} }
@@ -7264,6 +6473,20 @@ func (m *CMsgClientServiceCall) GetCallparameter() []byte {
 	return nil
 }
 
+func (m *CMsgClientServiceCall) GetPingOnly() bool {
+	if m != nil && m.PingOnly != nil {
+		return *m.PingOnly
+	}
+	return false
+}
+
+func (m *CMsgClientServiceCall) GetMaxOutstandingCalls() uint32 {
+	if m != nil && m.MaxOutstandingCalls != nil {
+		return *m.MaxOutstandingCalls
+	}
+	return 0
+}
+
 type CMsgClientServiceModule struct {
 	ModuleCrc        *uint32 `protobuf:"varint,1,opt,name=module_crc" json:"module_crc,omitempty"`
 	ModuleHash       []byte  `protobuf:"bytes,2,opt,name=module_hash" json:"module_hash,omitempty"`
@@ -7311,6 +6534,13 @@ type CMsgClientServiceCallResponse struct {
 	PortableSystemInfo    []byte  `protobuf:"bytes,12,opt,name=portable_system_info" json:"portable_system_info,omitempty"`
 	WasConverted          *bool   `protobuf:"varint,13,opt,name=was_converted" json:"was_converted,omitempty"`
 	InternalResult        *uint32 `protobuf:"varint,14,opt,name=internal_result" json:"internal_result,omitempty"`
+	CurrentCount          *uint32 `protobuf:"varint,15,opt,name=current_count" json:"current_count,omitempty"`
+	LastCallHandle        *uint32 `protobuf:"varint,16,opt,name=last_call_handle" json:"last_call_handle,omitempty"`
+	LastCallModuleCrc     *uint32 `protobuf:"varint,17,opt,name=last_call_module_crc" json:"last_call_module_crc,omitempty"`
+	LastCallSysidRouting  []byte  `protobuf:"bytes,18,opt,name=last_call_sysid_routing" json:"last_call_sysid_routing,omitempty"`
+	LastEcallresult       *uint32 `protobuf:"varint,19,opt,name=last_ecallresult" json:"last_ecallresult,omitempty"`
+	LastCallissueDelta    *uint32 `protobuf:"varint,20,opt,name=last_callissue_delta" json:"last_callissue_delta,omitempty"`
+	LastCallcompleteDelta *uint32 `protobuf:"varint,21,opt,name=last_callcomplete_delta" json:"last_callcomplete_delta,omitempty"`
 	XXX_unrecognized      []byte  `json:"-"`
 }
 
@@ -7416,6 +6646,55 @@ func (m *CMsgClientServiceCallResponse) GetInternalResult() uint32 {
 	return 0
 }
 
+func (m *CMsgClientServiceCallResponse) GetCurrentCount() uint32 {
+	if m != nil && m.CurrentCount != nil {
+		return *m.CurrentCount
+	}
+	return 0
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastCallHandle() uint32 {
+	if m != nil && m.LastCallHandle != nil {
+		return *m.LastCallHandle
+	}
+	return 0
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastCallModuleCrc() uint32 {
+	if m != nil && m.LastCallModuleCrc != nil {
+		return *m.LastCallModuleCrc
+	}
+	return 0
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastCallSysidRouting() []byte {
+	if m != nil {
+		return m.LastCallSysidRouting
+	}
+	return nil
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastEcallresult() uint32 {
+	if m != nil && m.LastEcallresult != nil {
+		return *m.LastEcallresult
+	}
+	return 0
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastCallissueDelta() uint32 {
+	if m != nil && m.LastCallissueDelta != nil {
+		return *m.LastCallissueDelta
+	}
+	return 0
+}
+
+func (m *CMsgClientServiceCallResponse) GetLastCallcompleteDelta() uint32 {
+	if m != nil && m.LastCallcompleteDelta != nil {
+		return *m.LastCallcompleteDelta
+	}
+	return 0
+}
+
 type CMsgAMUnlockStreaming struct {
 	XXX_unrecognized []byte `json:"-"`
 }
@@ -7494,8 +6773,6 @@ type CMsgClientCreateAccount struct {
 	AccountName      *string `protobuf:"bytes,1,opt,name=account_name" json:"account_name,omitempty"`
 	Password         *string `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
 	Email            *string `protobuf:"bytes,3,opt,name=email" json:"email,omitempty"`
-	Question         *string `protobuf:"bytes,4,opt,name=question" json:"question,omitempty"`
-	Answer           *string `protobuf:"bytes,5,opt,name=answer" json:"answer,omitempty"`
 	Launcher         *uint32 `protobuf:"varint,6,opt,name=launcher" json:"launcher,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
@@ -7521,20 +6798,6 @@ func (m *CMsgClientCreateAccount) GetPassword() string {
 func (m *CMsgClientCreateAccount) GetEmail() string {
 	if m != nil && m.Email != nil {
 		return *m.Email
-	}
-	return ""
-}
-
-func (m *CMsgClientCreateAccount) GetQuestion() string {
-	if m != nil && m.Question != nil {
-		return *m.Question
-	}
-	return ""
-}
-
-func (m *CMsgClientCreateAccount) GetAnswer() string {
-	if m != nil && m.Answer != nil {
-		return *m.Answer
 	}
 	return ""
 }

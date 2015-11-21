@@ -31,6 +31,7 @@ type CMsgProtoBufHeader struct {
 	PublisherGroupId  *uint32 `protobuf:"varint,19,opt,name=publisher_group_id" json:"publisher_group_id,omitempty"`
 	Sysid             *uint32 `protobuf:"varint,20,opt,name=sysid" json:"sysid,omitempty"`
 	TraceTag          *uint64 `protobuf:"varint,21,opt,name=trace_tag" json:"trace_tag,omitempty"`
+	WebapiKeyId       *uint32 `protobuf:"varint,25,opt,name=webapi_key_id" json:"webapi_key_id,omitempty"`
 	XXX_unrecognized  []byte  `json:"-"`
 }
 
@@ -166,6 +167,13 @@ func (m *CMsgProtoBufHeader) GetSysid() uint32 {
 func (m *CMsgProtoBufHeader) GetTraceTag() uint64 {
 	if m != nil && m.TraceTag != nil {
 		return *m.TraceTag
+	}
+	return 0
+}
+
+func (m *CMsgProtoBufHeader) GetWebapiKeyId() uint32 {
+	if m != nil && m.WebapiKeyId != nil {
+		return *m.WebapiKeyId
 	}
 	return 0
 }
@@ -394,6 +402,8 @@ type CMsgAppRights struct {
 	EditMarketing            *bool  `protobuf:"varint,11,opt,name=edit_marketing" json:"edit_marketing,omitempty"`
 	EconomySupport           *bool  `protobuf:"varint,12,opt,name=economy_support" json:"economy_support,omitempty"`
 	EconomySupportSupervisor *bool  `protobuf:"varint,13,opt,name=economy_support_supervisor" json:"economy_support_supervisor,omitempty"`
+	ManagePricing            *bool  `protobuf:"varint,14,opt,name=manage_pricing" json:"manage_pricing,omitempty"`
+	BroadcastLive            *bool  `protobuf:"varint,15,opt,name=broadcast_live" json:"broadcast_live,omitempty"`
 	XXX_unrecognized         []byte `json:"-"`
 }
 
@@ -488,6 +498,20 @@ func (m *CMsgAppRights) GetEconomySupport() bool {
 func (m *CMsgAppRights) GetEconomySupportSupervisor() bool {
 	if m != nil && m.EconomySupportSupervisor != nil {
 		return *m.EconomySupportSupervisor
+	}
+	return false
+}
+
+func (m *CMsgAppRights) GetManagePricing() bool {
+	if m != nil && m.ManagePricing != nil {
+		return *m.ManagePricing
+	}
+	return false
+}
+
+func (m *CMsgAppRights) GetBroadcastLive() bool {
+	if m != nil && m.BroadcastLive != nil {
+		return *m.BroadcastLive
 	}
 	return false
 }

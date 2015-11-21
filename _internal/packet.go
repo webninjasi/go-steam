@@ -5,8 +5,8 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	. "github.com/softashell/go-steam/_internal/steamlang"
 	"github.com/golang/protobuf/proto"
+	. "github.com/softashell/go-steam/_internal/steamlang"
 )
 
 // TODO: Headers are always deserialized twice.

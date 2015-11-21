@@ -7,7 +7,6 @@ package unified
 import proto "github.com/golang/protobuf/proto"
 import math "math"
 
-
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = math.Inf
@@ -188,6 +187,278 @@ func (*CPlayer_LastPlayedTimes_Notification) ProtoMessage()    {}
 func (m *CPlayer_LastPlayedTimes_Notification) GetGames() []*CPlayer_GetLastPlayedTimes_Response_Game {
 	if m != nil {
 		return m.Games
+	}
+	return nil
+}
+
+type CPlayerClient_GetSystemInformation_Request struct {
+	XXX_unrecognized []byte `json:"-"`
+}
+
+func (m *CPlayerClient_GetSystemInformation_Request) Reset() {
+	*m = CPlayerClient_GetSystemInformation_Request{}
+}
+func (m *CPlayerClient_GetSystemInformation_Request) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CPlayerClient_GetSystemInformation_Request) ProtoMessage() {}
+
+type CClientSystemInfo struct {
+	Cpu                *CClientSystemInfo_CPU       `protobuf:"bytes,1,opt,name=cpu" json:"cpu,omitempty"`
+	VideoCard          *CClientSystemInfo_VideoCard `protobuf:"bytes,2,opt,name=video_card" json:"video_card,omitempty"`
+	OperatingSystem    *string                      `protobuf:"bytes,3,opt,name=operating_system" json:"operating_system,omitempty"`
+	Os_64Bit           *bool                        `protobuf:"varint,4,opt,name=os_64bit" json:"os_64bit,omitempty"`
+	SystemRamMb        *int32                       `protobuf:"varint,5,opt,name=system_ram_mb" json:"system_ram_mb,omitempty"`
+	AudioDevice        *string                      `protobuf:"bytes,6,opt,name=audio_device" json:"audio_device,omitempty"`
+	AudioDriverVersion *string                      `protobuf:"bytes,7,opt,name=audio_driver_version" json:"audio_driver_version,omitempty"`
+	XXX_unrecognized   []byte                       `json:"-"`
+}
+
+func (m *CClientSystemInfo) Reset()         { *m = CClientSystemInfo{} }
+func (m *CClientSystemInfo) String() string { return proto.CompactTextString(m) }
+func (*CClientSystemInfo) ProtoMessage()    {}
+
+func (m *CClientSystemInfo) GetCpu() *CClientSystemInfo_CPU {
+	if m != nil {
+		return m.Cpu
+	}
+	return nil
+}
+
+func (m *CClientSystemInfo) GetVideoCard() *CClientSystemInfo_VideoCard {
+	if m != nil {
+		return m.VideoCard
+	}
+	return nil
+}
+
+func (m *CClientSystemInfo) GetOperatingSystem() string {
+	if m != nil && m.OperatingSystem != nil {
+		return *m.OperatingSystem
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo) GetOs_64Bit() bool {
+	if m != nil && m.Os_64Bit != nil {
+		return *m.Os_64Bit
+	}
+	return false
+}
+
+func (m *CClientSystemInfo) GetSystemRamMb() int32 {
+	if m != nil && m.SystemRamMb != nil {
+		return *m.SystemRamMb
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo) GetAudioDevice() string {
+	if m != nil && m.AudioDevice != nil {
+		return *m.AudioDevice
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo) GetAudioDriverVersion() string {
+	if m != nil && m.AudioDriverVersion != nil {
+		return *m.AudioDriverVersion
+	}
+	return ""
+}
+
+type CClientSystemInfo_CPU struct {
+	SpeedMhz           *int32  `protobuf:"varint,1,opt,name=speed_mhz" json:"speed_mhz,omitempty"`
+	Vendor             *string `protobuf:"bytes,2,opt,name=vendor" json:"vendor,omitempty"`
+	LogicalProcessors  *int32  `protobuf:"varint,3,opt,name=logical_processors" json:"logical_processors,omitempty"`
+	PhysicalProcessors *int32  `protobuf:"varint,4,opt,name=physical_processors" json:"physical_processors,omitempty"`
+	Hyperthreading     *bool   `protobuf:"varint,5,opt,name=hyperthreading" json:"hyperthreading,omitempty"`
+	Fcmov              *bool   `protobuf:"varint,6,opt,name=fcmov" json:"fcmov,omitempty"`
+	Sse2               *bool   `protobuf:"varint,7,opt,name=sse2" json:"sse2,omitempty"`
+	Sse3               *bool   `protobuf:"varint,8,opt,name=sse3" json:"sse3,omitempty"`
+	Ssse3              *bool   `protobuf:"varint,9,opt,name=ssse3" json:"ssse3,omitempty"`
+	Sse4A              *bool   `protobuf:"varint,10,opt,name=sse4a" json:"sse4a,omitempty"`
+	Sse41              *bool   `protobuf:"varint,11,opt,name=sse41" json:"sse41,omitempty"`
+	Sse42              *bool   `protobuf:"varint,12,opt,name=sse42" json:"sse42,omitempty"`
+	XXX_unrecognized   []byte  `json:"-"`
+}
+
+func (m *CClientSystemInfo_CPU) Reset()         { *m = CClientSystemInfo_CPU{} }
+func (m *CClientSystemInfo_CPU) String() string { return proto.CompactTextString(m) }
+func (*CClientSystemInfo_CPU) ProtoMessage()    {}
+
+func (m *CClientSystemInfo_CPU) GetSpeedMhz() int32 {
+	if m != nil && m.SpeedMhz != nil {
+		return *m.SpeedMhz
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_CPU) GetVendor() string {
+	if m != nil && m.Vendor != nil {
+		return *m.Vendor
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo_CPU) GetLogicalProcessors() int32 {
+	if m != nil && m.LogicalProcessors != nil {
+		return *m.LogicalProcessors
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_CPU) GetPhysicalProcessors() int32 {
+	if m != nil && m.PhysicalProcessors != nil {
+		return *m.PhysicalProcessors
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_CPU) GetHyperthreading() bool {
+	if m != nil && m.Hyperthreading != nil {
+		return *m.Hyperthreading
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetFcmov() bool {
+	if m != nil && m.Fcmov != nil {
+		return *m.Fcmov
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSse2() bool {
+	if m != nil && m.Sse2 != nil {
+		return *m.Sse2
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSse3() bool {
+	if m != nil && m.Sse3 != nil {
+		return *m.Sse3
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSsse3() bool {
+	if m != nil && m.Ssse3 != nil {
+		return *m.Ssse3
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSse4A() bool {
+	if m != nil && m.Sse4A != nil {
+		return *m.Sse4A
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSse41() bool {
+	if m != nil && m.Sse41 != nil {
+		return *m.Sse41
+	}
+	return false
+}
+
+func (m *CClientSystemInfo_CPU) GetSse42() bool {
+	if m != nil && m.Sse42 != nil {
+		return *m.Sse42
+	}
+	return false
+}
+
+type CClientSystemInfo_VideoCard struct {
+	Driver           *string `protobuf:"bytes,1,opt,name=driver" json:"driver,omitempty"`
+	DriverVersion    *string `protobuf:"bytes,2,opt,name=driver_version" json:"driver_version,omitempty"`
+	DriverDate       *uint32 `protobuf:"varint,3,opt,name=driver_date" json:"driver_date,omitempty"`
+	DirectxVersion   *string `protobuf:"bytes,4,opt,name=directx_version" json:"directx_version,omitempty"`
+	OpenglVersion    *string `protobuf:"bytes,5,opt,name=opengl_version" json:"opengl_version,omitempty"`
+	Vendorid         *int32  `protobuf:"varint,6,opt,name=vendorid" json:"vendorid,omitempty"`
+	Deviceid         *int32  `protobuf:"varint,7,opt,name=deviceid" json:"deviceid,omitempty"`
+	VramMb           *int32  `protobuf:"varint,8,opt,name=vram_mb" json:"vram_mb,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *CClientSystemInfo_VideoCard) Reset()         { *m = CClientSystemInfo_VideoCard{} }
+func (m *CClientSystemInfo_VideoCard) String() string { return proto.CompactTextString(m) }
+func (*CClientSystemInfo_VideoCard) ProtoMessage()    {}
+
+func (m *CClientSystemInfo_VideoCard) GetDriver() string {
+	if m != nil && m.Driver != nil {
+		return *m.Driver
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo_VideoCard) GetDriverVersion() string {
+	if m != nil && m.DriverVersion != nil {
+		return *m.DriverVersion
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo_VideoCard) GetDriverDate() uint32 {
+	if m != nil && m.DriverDate != nil {
+		return *m.DriverDate
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_VideoCard) GetDirectxVersion() string {
+	if m != nil && m.DirectxVersion != nil {
+		return *m.DirectxVersion
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo_VideoCard) GetOpenglVersion() string {
+	if m != nil && m.OpenglVersion != nil {
+		return *m.OpenglVersion
+	}
+	return ""
+}
+
+func (m *CClientSystemInfo_VideoCard) GetVendorid() int32 {
+	if m != nil && m.Vendorid != nil {
+		return *m.Vendorid
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_VideoCard) GetDeviceid() int32 {
+	if m != nil && m.Deviceid != nil {
+		return *m.Deviceid
+	}
+	return 0
+}
+
+func (m *CClientSystemInfo_VideoCard) GetVramMb() int32 {
+	if m != nil && m.VramMb != nil {
+		return *m.VramMb
+	}
+	return 0
+}
+
+type CPlayerClient_GetSystemInformation_Response struct {
+	SystemInfo       *CClientSystemInfo `protobuf:"bytes,1,opt,name=system_info" json:"system_info,omitempty"`
+	XXX_unrecognized []byte             `json:"-"`
+}
+
+func (m *CPlayerClient_GetSystemInformation_Response) Reset() {
+	*m = CPlayerClient_GetSystemInformation_Response{}
+}
+func (m *CPlayerClient_GetSystemInformation_Response) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CPlayerClient_GetSystemInformation_Response) ProtoMessage() {}
+
+func (m *CPlayerClient_GetSystemInformation_Response) GetSystemInfo() *CClientSystemInfo {
+	if m != nil {
+		return m.SystemInfo
 	}
 	return nil
 }

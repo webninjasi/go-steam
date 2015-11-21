@@ -7,7 +7,6 @@ package unified
 import proto "github.com/golang/protobuf/proto"
 import math "math"
 
-
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = math.Inf
@@ -121,6 +120,9 @@ type CCredentials_GetSteamGuardDetails_Response struct {
 	DeprecatedAuthenticationExistsFromGeolocBeforeMintime *bool                                                           `protobuf:"varint,6,opt,name=deprecated_authentication_exists_from_geoloc_before_mintime" json:"deprecated_authentication_exists_from_geoloc_before_mintime,omitempty"`
 	DeprecatedMachineId                                   *uint64                                                         `protobuf:"varint,7,opt,name=deprecated_machine_id" json:"deprecated_machine_id,omitempty"`
 	SessionData                                           []*CCredentials_GetSteamGuardDetails_Response_SessionData       `protobuf:"bytes,8,rep,name=session_data" json:"session_data,omitempty"`
+	IsTwofactorEnabled                                    *bool                                                           `protobuf:"varint,9,opt,name=is_twofactor_enabled" json:"is_twofactor_enabled,omitempty"`
+	TimestampTwofactorEnabled                             *uint32                                                         `protobuf:"fixed32,10,opt,name=timestamp_twofactor_enabled" json:"timestamp_twofactor_enabled,omitempty"`
+	IsPhoneVerified                                       *bool                                                           `protobuf:"varint,11,opt,name=is_phone_verified" json:"is_phone_verified,omitempty"`
 	XXX_unrecognized                                      []byte                                                          `json:"-"`
 }
 
@@ -186,6 +188,27 @@ func (m *CCredentials_GetSteamGuardDetails_Response) GetSessionData() []*CCreden
 		return m.SessionData
 	}
 	return nil
+}
+
+func (m *CCredentials_GetSteamGuardDetails_Response) GetIsTwofactorEnabled() bool {
+	if m != nil && m.IsTwofactorEnabled != nil {
+		return *m.IsTwofactorEnabled
+	}
+	return false
+}
+
+func (m *CCredentials_GetSteamGuardDetails_Response) GetTimestampTwofactorEnabled() uint32 {
+	if m != nil && m.TimestampTwofactorEnabled != nil {
+		return *m.TimestampTwofactorEnabled
+	}
+	return 0
+}
+
+func (m *CCredentials_GetSteamGuardDetails_Response) GetIsPhoneVerified() bool {
+	if m != nil && m.IsPhoneVerified != nil {
+		return *m.IsPhoneVerified
+	}
+	return false
 }
 
 type CCredentials_GetSteamGuardDetails_Response_NewAuthentication struct {
@@ -518,6 +541,7 @@ type CCredentials_AccountLockRequest_Request struct {
 	ParamString      *string `protobuf:"bytes,1,opt,name=param_string" json:"param_string,omitempty"`
 	IpaddressActual  *uint32 `protobuf:"varint,2,opt,name=ipaddress_actual" json:"ipaddress_actual,omitempty"`
 	QueryOnly        *bool   `protobuf:"varint,3,opt,name=query_only" json:"query_only,omitempty"`
+	EmailMessageType *int32  `protobuf:"varint,4,opt,name=email_message_type" json:"email_message_type,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
 
@@ -546,6 +570,13 @@ func (m *CCredentials_AccountLockRequest_Request) GetQueryOnly() bool {
 		return *m.QueryOnly
 	}
 	return false
+}
+
+func (m *CCredentials_AccountLockRequest_Request) GetEmailMessageType() int32 {
+	if m != nil && m.EmailMessageType != nil {
+		return *m.EmailMessageType
+	}
+	return 0
 }
 
 type CCredentials_AccountLockRequest_Response struct {
@@ -580,38 +611,6 @@ func (m *CCredentials_AccountLockRequest_Response) GetExpiredLink() bool {
 		return *m.ExpiredLink
 	}
 	return false
-}
-
-type CCredentials_SteamGuardCode_Request struct {
-	PanicButton      *bool  `protobuf:"varint,1,opt,name=panic_button" json:"panic_button,omitempty"`
-	XXX_unrecognized []byte `json:"-"`
-}
-
-func (m *CCredentials_SteamGuardCode_Request) Reset()         { *m = CCredentials_SteamGuardCode_Request{} }
-func (m *CCredentials_SteamGuardCode_Request) String() string { return proto.CompactTextString(m) }
-func (*CCredentials_SteamGuardCode_Request) ProtoMessage()    {}
-
-func (m *CCredentials_SteamGuardCode_Request) GetPanicButton() bool {
-	if m != nil && m.PanicButton != nil {
-		return *m.PanicButton
-	}
-	return false
-}
-
-type CCredentials_SteamGuardCode_Response struct {
-	SteamguardCode   *string `protobuf:"bytes,1,opt,name=steamguard_code" json:"steamguard_code,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CCredentials_SteamGuardCode_Response) Reset()         { *m = CCredentials_SteamGuardCode_Response{} }
-func (m *CCredentials_SteamGuardCode_Response) String() string { return proto.CompactTextString(m) }
-func (*CCredentials_SteamGuardCode_Response) ProtoMessage()    {}
-
-func (m *CCredentials_SteamGuardCode_Response) GetSteamguardCode() string {
-	if m != nil && m.SteamguardCode != nil {
-		return *m.SteamguardCode
-	}
-	return ""
 }
 
 type CCredentials_LastCredentialChangeTime_Request struct {
@@ -698,42 +697,6 @@ func (m *CCredentials_GetAccountAuthSecret_Response) GetSecret() []byte {
 		return m.Secret
 	}
 	return nil
-}
-
-type CCredentials_SteamGuardLoginAttempt_Notification struct {
-	IsWebCookie      *bool   `protobuf:"varint,1,opt,name=is_web_cookie" json:"is_web_cookie,omitempty"`
-	Ipaddress        *int32  `protobuf:"varint,2,opt,name=ipaddress" json:"ipaddress,omitempty"`
-	GeolocInfo       *string `protobuf:"bytes,3,opt,name=geoloc_info" json:"geoloc_info,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
-}
-
-func (m *CCredentials_SteamGuardLoginAttempt_Notification) Reset() {
-	*m = CCredentials_SteamGuardLoginAttempt_Notification{}
-}
-func (m *CCredentials_SteamGuardLoginAttempt_Notification) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CCredentials_SteamGuardLoginAttempt_Notification) ProtoMessage() {}
-
-func (m *CCredentials_SteamGuardLoginAttempt_Notification) GetIsWebCookie() bool {
-	if m != nil && m.IsWebCookie != nil {
-		return *m.IsWebCookie
-	}
-	return false
-}
-
-func (m *CCredentials_SteamGuardLoginAttempt_Notification) GetIpaddress() int32 {
-	if m != nil && m.Ipaddress != nil {
-		return *m.Ipaddress
-	}
-	return 0
-}
-
-func (m *CCredentials_SteamGuardLoginAttempt_Notification) GetGeolocInfo() string {
-	if m != nil && m.GeolocInfo != nil {
-		return *m.GeolocInfo
-	}
-	return ""
 }
 
 func init() {

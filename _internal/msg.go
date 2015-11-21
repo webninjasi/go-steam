@@ -3,9 +3,9 @@ package _internal
 import (
 	"io"
 
+	"github.com/golang/protobuf/proto"
 	. "github.com/softashell/go-steam/_internal/steamlang"
 	. "github.com/softashell/go-steam/steamid"
-	"github.com/golang/protobuf/proto"
 )
 
 // Interface for all messages, typically outgoing. They can also be created by

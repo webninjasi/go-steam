@@ -34,6 +34,7 @@ type ContentManifestPayload_FileMapping struct {
 	ShaFilename      []byte                                          `protobuf:"bytes,4,opt,name=sha_filename" json:"sha_filename,omitempty"`
 	ShaContent       []byte                                          `protobuf:"bytes,5,opt,name=sha_content" json:"sha_content,omitempty"`
 	Chunks           []*ContentManifestPayload_FileMapping_ChunkData `protobuf:"bytes,6,rep,name=chunks" json:"chunks,omitempty"`
+	Linktarget       *string                                         `protobuf:"bytes,7,opt,name=linktarget" json:"linktarget,omitempty"`
 	XXX_unrecognized []byte                                          `json:"-"`
 }
 
@@ -81,6 +82,13 @@ func (m *ContentManifestPayload_FileMapping) GetChunks() []*ContentManifestPaylo
 		return m.Chunks
 	}
 	return nil
+}
+
+func (m *ContentManifestPayload_FileMapping) GetLinktarget() string {
+	if m != nil && m.Linktarget != nil {
+		return *m.Linktarget
+	}
+	return ""
 }
 
 type ContentManifestPayload_FileMapping_ChunkData struct {
