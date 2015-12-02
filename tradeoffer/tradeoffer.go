@@ -6,7 +6,6 @@ See: https://developer.valvesoftware.com/wiki/Steam_Web_API/IEconService
 package tradeoffer
 
 import (
-	"github.com/softashell/go-steam/economy"
 	"github.com/softashell/go-steam/economy/inventory"
 	"github.com/softashell/go-steam/steamid"
 )
